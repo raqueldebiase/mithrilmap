@@ -1,12 +1,14 @@
-// Register.js
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Importe Link de 'react-router-dom'
 import styles from './Register.module.css';
+import Login from '../Login/Login';
 
 const Register = () => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: '',
+    age: '', // Adicione a entrada 'age' ao estado
   });
 
   const handleChange = (e) => {
@@ -23,7 +25,7 @@ const Register = () => {
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <input
-        className={styles.input}
+          className={styles.input}
           type="text"
           name="username"
           placeholder="Username"
@@ -31,7 +33,7 @@ const Register = () => {
           onChange={handleChange}
         />
         <input
-        className={styles.input}
+          className={styles.input}
           type="email"
           name="email"
           placeholder="Email"
@@ -39,14 +41,23 @@ const Register = () => {
           onChange={handleChange}
         />
         <input
-        className={styles.input}
+          className={styles.input}
           type="password"
           name="password"
           placeholder="Password"
           value={formData.password}
           onChange={handleChange}
         />
+        <input
+          className={styles.input}
+          type="number"
+          name="age"
+          placeholder="Age"
+          value={formData.age} // Corrija para 'formData.age' em vez de 'formData.number'
+          onChange={handleChange}
+        />
         <button className={styles.button} type="submit">Register</button>
+        <Link className={styles.buttonBack} to="/Login">Back to login</Link>
       </form>
     </div>
   );

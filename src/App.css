@@ -10,6 +10,7 @@ body {
   font-family: var(--type-first);
   padding-top: 4em;
   background-color: rgba(241, 234, 201, 0.33);
+  height: 100%;
 }
 
 h1, h2, h3, h4, p {
@@ -36,6 +37,11 @@ button, input {
 
 a {
   text-decoration: none;
+}
+
+a:-webkit-any-link {
+  color: #3e3e3e;
+  cursor: pointer;
 }
 
 .container {

@@ -88,11 +88,28 @@ form{
   cursor: wait;
 }
 
+.buttonBack {
+  border: none;
+  font-size: 0.8rem;
+  background-color: transparent;
+}
+
+.buttonBack:focus,
+.buttonBack:hover {
+  outline: none;
+  border-bottom: 1px solid #3e3e3e;
+  cursor: pointer;
+}
+
 .register {
   margin-top: 3rem !important;
   color: #3e3e3e;
   font-size: 0.8rem;
   margin-top: 30px;
+}
+
+.buttonBack:active {
+  color: 3e3e3e;
 }
 
 .register:hover,
