@@ -3,24 +3,26 @@
 }
 
 body {
-  margin: 0px;
+  margin: 0;
   color: #333;
   --type-first: Helvetica, Arial, sans-serif;
   --type-second: 'Spectral', Georgia;
+  --type-title: 'mate-sc-regular';
   font-family: var(--type-first);
   padding-top: 4em;
   background-color: rgba(241, 234, 201, 0.33);
-  height: 100%;
+  height: 30vh;
+  overflow: hidden; /* Evita o scroll horizontal indesejado */
 }
 
 h1, h2, h3, h4, p {
-  margin: 0px;
+  margin: 0;
 }
 
 ul, li {
   list-style: none;
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
 }
 
 img {
@@ -37,16 +39,27 @@ button, input {
 
 a {
   text-decoration: none;
-}
-
-a:-webkit-any-link {
-  color: #3e3e3e;
-  cursor: pointer;
+  color: inherit; /* Garante que o link herde a cor do texto */
 }
 
 .container {
   max-width: 65rem;
   padding: 0 1rem;
   margin: 0 auto;
-
 }
+
+
+.app-container {
+  position: relative;
+  z-index: 99999999999999; /* Garante que o conteúdo fique acima do Parallax */
+}
+
+.parallax {
+  position: fixed; /* Posição fixa para garantir que o Parallax permaneça na tela durante o scroll */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Define um z-index menor para garantir que o Parallax fique atrás do conteúdo */
+}
+

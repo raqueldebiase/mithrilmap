@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 
 import Header from './components/Header';
@@ -7,14 +7,12 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import Login from './components/Auth/Login/Login';
 import Register from './components/Auth/Register/Register';
+import Parallax from './components/Parallax/Parallax';
 
 const App = () => {
-
-
-
   return (
-    <div>
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="app-container">
         <Header />
         <Routes>
           {/* Definindo a página de login como a página inicial */}
@@ -27,8 +25,9 @@ const App = () => {
           <Route path='/register/*' element={<Register />} />
         </Routes>
         <Footer />
-      </BrowserRouter>
-    </div>
+      </div>
+      <Parallax />
+    </BrowserRouter>
   );
 };
 

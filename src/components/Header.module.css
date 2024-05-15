@@ -1,26 +1,31 @@
 .header {
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
-
   position: fixed;
   width: 100%;
   z-index: 100;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.5); /* Cor de fundo com transparência */
+  backdrop-filter: blur(10px); /* Aplica o efeito de desfoque */
   top: 0px;
+  height: 5rem;
+  padding: 1rem 2.2rem;
 }
+
 
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 4rem;
+
 }
 
-.logo {
-  padding: 0.5rem 0;
+.logoTitle {
+  font-family: 'mate-sc-regular';
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
-.login{
-  color: #333;
+.profileImg {
+  width: 50px;
+  height: 50px;
 }
 
 .login::after{

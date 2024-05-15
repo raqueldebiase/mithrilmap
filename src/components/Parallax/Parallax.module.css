@@ -1,0 +1,92 @@
+
+@keyframes moveRight {
+  from {
+    transform: translateX(-100px);
+  }
+  to {
+    transform: translateX(100px);
+  }
+}
+
+@keyframes moveBottom {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(100px);
+  }
+}
+
+@keyframes moveBottom2{
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(100px);
+  }
+}
+
+.parallaxContainer {
+  position: relative;
+  width: 100vw;
+  height: 5vh; /* ou qualquer valor necessário para o efeito desejado */
+  /* overflow: hidden; */
+
+}
+
+.parallax {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  z-index: -1;
+}
+
+.layer1 {
+  top: 0vh; /* Posição inicial da camada 1 */
+  z-index: 4;
+}
+
+.layer1 img {
+  animation: moveBottom2 8s infinite alternate; 
+  width: 150%; 
+}
+
+.layer4 img {
+  animation: moveRight 20s infinite alternate; 
+  width: 150%; 
+}
+
+.layer2 {
+  top: -20vh; /* Posição inicial da camada 2 */
+  z-index: 3;
+}
+
+.layer3 {
+  top: -20vh; /* Posição inicial da camada 3 */
+  z-index: 2;
+}
+
+.layer3 img {
+  animation: moveBottom 20s infinite alternate; 
+  width: 150%; 
+}
+
+.layer4 {
+  top: -50vh; /* Posição inicial da camada 4 */
+  z-index: 1;
+  width: 120%; /* Aumenta a largura do contêiner */
+  margin-left: -10%; /* Aplica uma margem negativa para compensar o aumento */
+  margin-right: -10%; /* Aplica uma margem negativa para compensar o aumento */
+  overflow: hidden;
+}
+
+.layer4 img {
+  transform: scaleX(1.2) scaleY(1.2); /* Ajusta a escala do SVG */
+  overflow: hidden;
+}
+
+
+.layer1 img, .layer2 img, .layer3 img, .layer4 img {
+  width: 100%;
+  height: auto;
+}

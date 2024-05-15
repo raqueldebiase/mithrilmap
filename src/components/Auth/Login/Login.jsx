@@ -20,7 +20,7 @@ const Login = () => {
 
   return (
     <div className={`${styles.login} modal`}>
-      <h2>Login</h2>
+      <h2>SHAALL YOOU PAAAS ?</h2>
       <form onSubmit={handleSubmit}>
         <input
           className={styles.input}

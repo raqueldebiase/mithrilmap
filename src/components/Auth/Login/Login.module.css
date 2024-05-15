@@ -8,13 +8,16 @@
   margin: auto;
   padding: 3rem;
   text-align: center;
-  margin-top: 8rem;
+  margin-top: 14rem;
+  position: relative;
+  z-index: 5;
 }
 
 h2 {
-  color: #023216;
+  color: #3E3E3E;
   text-align: center;
   font-size: 1.7rem;
+  font-family: 'mate-sc-regular';
 }
 
 .wrapper {
