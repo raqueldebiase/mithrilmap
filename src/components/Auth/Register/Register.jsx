@@ -1,5 +1,6 @@
 // Register.js
 import React, { useState } from 'react';
+import styles from './Register.module.css';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -18,10 +19,11 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div className={`${styles.login} modal`}>
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <input
+        className={styles.input}
           type="text"
           name="username"
           placeholder="Username"
@@ -29,6 +31,7 @@ const Register = () => {
           onChange={handleChange}
         />
         <input
+        className={styles.input}
           type="email"
           name="email"
           placeholder="Email"
@@ -36,13 +39,14 @@ const Register = () => {
           onChange={handleChange}
         />
         <input
+        className={styles.input}
           type="password"
           name="password"
           placeholder="Password"
           value={formData.password}
           onChange={handleChange}
         />
-        <button type="submit">Register</button>
+        <button className={styles.button} type="submit">Register</button>
       </form>
     </div>
   );
