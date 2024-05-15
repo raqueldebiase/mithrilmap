@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './Login.module.css';
 import { Link } from 'react-router-dom';
 import Register from '../Register/Register';
 
@@ -18,10 +19,11 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className={`${styles.login} modal`}>
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <input
+          className={styles.input}
           type="text"
           name="usernameOrEmail"
           placeholder="Username or Email"
@@ -29,14 +31,15 @@ const Login = () => {
           onChange={handleChange}
         />
         <input
+          className={styles.input}
           type="password"
           name="password"
           placeholder="Password"
           value={formData.password}
           onChange={handleChange}
         />
-        <button type="submit">Login</button>
-        <Link to="/Register">Register</Link>
+        <button className={styles.button} type="submit">Login</button>
+        <Link className={styles.register} to="/Register">Not register yet? Click here</Link>
       </form>
     </div>
   );

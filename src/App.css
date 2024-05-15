@@ -8,7 +8,8 @@ body {
   --type-first: Helvetica, Arial, sans-serif;
   --type-second: 'Spectral', Georgia;
   font-family: var(--type-first);
-  padding-top: 4rem;
+  padding-top: 4em;
+  background-color: rgba(241, 234, 201, 0.33);
 }
 
 h1, h2, h3, h4, p {
