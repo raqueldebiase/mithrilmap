@@ -1,3 +1,78 @@
+/* Estrutura geral */
 .home {
-  background-color: pink;
+  padding-top: 5rem;
+  margin-bottom: 5rem;
+  height: 100vh;
 }
+
+.container {
+  padding: 20px;
+}
+
+.evolution {
+  border: 1px solid #c3c3c3;
+  border-radius: 0.4rem;
+  padding: 1.3rem;
+  margin: 24px 10px;
+}
+
+/* .chapterList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0.5rem;
+} */
+
+.evolution h2 {
+  padding: 1.1rem 0;
+  font-family: var(--type-tirth);
+  font-weight: 300;
+  
+}
+
+/* Barra de progresso */
+.progressContainer {
+  border: 1px solid #000;
+  border: none;
+  width: 100%;
+  margin: 20px 0;
+  background-color: rgba(226, 228, 199, 1);
+}
+
+.progressBar {
+  background-color: #BFC76C;
+  height: 3rem;
+  border: none;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Lista de capítulos */
+.chapterList {
+  list-style: none;
+  padding: 0;
+  overflow: hidden;
+}
+
+.chapterItem {
+  margin: 10px 10px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-family: var(--type-tirth);
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 1.4rem;
+  border-radius: 0.4rem;
+  transition: transform 0.3s ease; /* Adiciona uma transição de 0.3 segundos para a propriedade transform */
+}
+
+.chapterItem:hover,
+.chapterItem:focus{
+  outline: none;
+  box-shadow: 0 0 0 3px #fea, 0 0 0 4px #fb1;
+  transition: 0.2s;
+}
+
+
+.clicked {
+  transform: translateX(100%); /* Move o elemento 100% para a direita quando clicado */
+}
+

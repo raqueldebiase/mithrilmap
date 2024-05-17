@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Tengwar Annatar';
+  src: url('../src/assets/fonts/TengwarAnnatar/tengwar-annatar.ttf') format('truetype');
+  src: url('../src/assets/fonts/TengwarAnnatar/tengwar-annatar.woff') format('truetype');
+  /* Adicione outros formatos de fonte, como woff2, woff, etc., para compatibilidade */
+}
+
+
 * {
   box-sizing: border-box;
 }
@@ -6,13 +14,15 @@ body {
   margin: 0;
   color: #333;
   --type-first: Helvetica, Arial, sans-serif;
-  --type-second: 'Spectral', Georgia;
+  --type-second: 'Nunito', Georgia, sans-serif;
+  --type-tirth: 'Poppins', sans-serif; 
   --type-title: 'mate-sc-regular';
+  --type-elf: 'Tengwar Annatar', sans-serif;
   font-family: var(--type-first);
   padding-top: 4em;
   background-color: rgba(241, 234, 201, 0.33);
   height: 30vh;
-  overflow: hidden; /* Evita o scroll horizontal indesejado */
+  overflow-x: hidden; /* Evita o scroll horizontal indesejado */
 }
 
 h1, h2, h3, h4, p {
@@ -43,7 +53,7 @@ a {
 }
 
 .container {
-  max-width: 65rem;
+  max-width: 72rem;
   padding: 0 1rem;
   margin: 0 auto;
 }
