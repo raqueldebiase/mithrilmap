@@ -5,7 +5,7 @@
   height: 100vh;
 }
 
-.container {
+.home.container {
   padding: 20px;
 }
 
@@ -50,6 +50,9 @@
   list-style: none;
   padding: 0;
   overflow: hidden;
+  padding-bottom: 2rem;
+  height: 600px;
+  overflow-y: auto;
 }
 
 .chapterItem {
@@ -76,3 +79,22 @@
   transform: translateX(100%); /* Move o elemento 100% para a direita quando clicado */
 }
 
+
+@media screen and (max-width: 1140px) {
+  .home.container {
+    max-width: 60rem !important;
+  }
+  
+}
+
+@media screen and (max-width: 840px) {
+  .home.container {
+    max-width: 40rem !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .chapterList {
+    padding-bottom: 5rem;
+  }
+}

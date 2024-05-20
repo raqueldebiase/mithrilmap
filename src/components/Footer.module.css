@@ -43,3 +43,18 @@
   text-decoration: underline;
 }
 
+@media screen and (max-width: 999px){
+  .description {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 488px){
+  .description p{
+    font-size: 0.7rem;
+
+  }
+  .footer {
+    padding: 1rem;
+  }
+}

@@ -8,7 +8,6 @@ const Register = () => {
     username: '',
     email: '',
     password: '',
-    age: '', // Adicione a entrada 'age' ao estado
   });
 
   const handleChange = (e) => {
@@ -46,14 +45,6 @@ const Register = () => {
           name="password"
           placeholder="Password"
           value={formData.password}
-          onChange={handleChange}
-        />
-        <input
-          className={styles.input}
-          type="number"
-          name="age"
-          placeholder="Age"
-          value={formData.age} // Corrija para 'formData.age' em vez de 'formData.number'
           onChange={handleChange}
         />
         <button className={styles.button} type="submit">Register</button>

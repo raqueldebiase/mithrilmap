@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import  { useLocation } from 'react-router-dom';
 import styles from './Parallax.module.css';
 import svg1 from '../../assets/svg1.svg';
 import svg2 from '../../assets/svg2.svg';
@@ -6,6 +7,11 @@ import svg3 from '../../assets/svg3.svg';
 import svg4 from '../../assets/svg4.svg';
 
 const Parallax = () => {
+
+    const location = useLocation();
+    const isHomeRoute = location.pathname === '/home';
+
+
     useEffect(() => {
         const handleScroll = () => {
             const parallaxElements = document.querySelectorAll(`.${styles.parallax}`);
@@ -23,7 +29,7 @@ const Parallax = () => {
     }, []);
 
     return (
-        <div className={styles.parallaxContainer}>
+        <div className={`${styles.parallaxContainer} ${isHomeRoute ? styles.homeRoute : ''}`}>
             <div className={`${styles.parallax} ${styles.layer1}`} data-speed="200">
                 <img src={svg1} alt="Layer 1" />
             </div>

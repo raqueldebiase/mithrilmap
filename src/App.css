@@ -21,8 +21,8 @@ body {
   font-family: var(--type-first);
   padding-top: 4em;
   background-color: rgba(241, 234, 201, 0.33);
-  height: 30vh;
-  overflow: hidden !important; /* Evita o scroll horizontal indesejado */
+  background-repeat: no-repeat;
+  height: 100%;
 }
 
 h1, h2, h3, h4, p {

@@ -120,3 +120,24 @@ form{
   border-bottom: 1px solid #3e3e3e;
 
 }
+
+@media screen and (max-width: 550px){
+  .login {
+    margin-top: 5rem;
+    width: 25rem;
+  }
+  .login h2 {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 460px){
+  .login {
+    margin-top: 5rem;
+    width: 20rem;
+    padding: 2rem;
+  }
+  .login h2 {
+    font-size: 1.3rem;
+  }
+}
