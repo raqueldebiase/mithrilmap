@@ -1,10 +1,9 @@
-
 @keyframes moveRight {
   from {
-    transform: translateX(-100px);
+    transform: translateX(-10%);
   }
   to {
-    transform: translateX(100px);
+    transform: translateX(5%);
   }
 }
 
@@ -17,7 +16,7 @@
   }
 }
 
-@keyframes moveBottom2{
+@keyframes moveBottom2 {
   from {
     transform: translateY(0px);
   }
@@ -30,8 +29,6 @@
   position: relative;
   width: 100vw;
   height: 5vh; /* ou qualquer valor necessário para o efeito desejado */
-  /* overflow: hidden; */
-
 }
 
 .parallax {
@@ -47,13 +44,13 @@
 }
 
 .layer1 img {
-  animation: moveBottom2 8s infinite alternate; 
-  width: 150%; 
+  animation: moveBottom2 8s infinite alternate;
+  width: 150%;
 }
 
 .layer4 img {
-  animation: moveRight 20s infinite alternate; 
-  width: 150%; 
+  animation: moveRight 20s infinite alternate;
+  width: 150%;
 }
 
 .layer2 {
@@ -67,26 +64,94 @@
 }
 
 .layer3 img {
-  animation: moveBottom 20s infinite alternate; 
-  width: 150%; 
+  animation: moveBottom 20s infinite alternate;
 }
 
 .layer4 {
   top: -50vh; /* Posição inicial da camada 4 */
   z-index: 1;
-  width: 120%; /* Aumenta a largura do contêiner */
-  margin-left: -10%; /* Aplica uma margem negativa para compensar o aumento */
-  margin-right: -10%; /* Aplica uma margem negativa para compensar o aumento */
   overflow: hidden;
 }
 
 .layer4 img {
-  transform: scaleX(1.2) scaleY(1.2); /* Ajusta a escala do SVG */
-  overflow: hidden;
+  transform: scaleX(1.2) scaleY(1.2);
+  width: 140%;
+  position: relative;
+  left: -10%;
 }
 
-
-.layer1 img, .layer2 img, .layer3 img, .layer4 img {
+.layer1 img, .layer2 img, .layer3 img {
   width: 100%;
   height: auto;
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-width: 480px) {
+  .layer1 {
+    top: 0vh;
+  }
+  .layer2 {
+    top: -10vh;
+  }
+  .layer3 {
+    top: -10vh;
+  }
+  .layer4 {
+    top: -30vh;
+  }
+}
+
+/* Ajustes para smartphones e tablets em modo retrato */
+@media (max-width: 767px) {
+  .layer1 {
+    top: -15vh;
+  }
+  .layer2 {
+    top: -20vh;
+  }
+  .layer3 {
+    top: -20vh;
+  }
+  .layer4 {
+    top: -40vh;
+  }
+}
+
+/* Ajustes para tablets em modo paisagem e pequenos laptops */
+@media (max-width: 1024px) {
+  .layer1 {
+    top: -18vh;
+  }
+  .layer1 img {
+    animation: moveBottom2 20s infinite alternate;
+  }
+  .layer4 {
+    top: -52vh;
+  }
+}
+
+/* Ajustes para laptops e desktops */
+@media (max-width: 1440px) {
+  .layer1 {
+    top: -18vh;
+  }
+  .layer1 img {
+    animation: moveBottom2 20s infinite alternate;
+  }
+  .layer4 {
+    top: -52vh;
+  }
+}
+
+/* Ajustes para monitores grandes */
+@media (max-width: 1750px) {
+  .layer2 {
+    top: -25vh;
+  }
+  .layer3 {
+    top: -35vh;
+  }
+  .layer4 {
+    top: -60vh;
+  }
 }

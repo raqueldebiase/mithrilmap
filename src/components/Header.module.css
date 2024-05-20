@@ -28,6 +28,10 @@
   height: 50px;
 }
 
+.profileImg img {
+  max-width: 100%;
+}
+
 .login::after{
   content: '';
   display: inline-block;

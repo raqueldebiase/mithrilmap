@@ -15,14 +15,14 @@ body {
   color: #333;
   --type-first: Helvetica, Arial, sans-serif;
   --type-second: 'Nunito', Georgia, sans-serif;
-  --type-tirth: 'Poppins', sans-serif; 
+  --type-tirth: 'Poppins', sans-serif;
   --type-title: 'mate-sc-regular';
   --type-elf: 'Tengwar Annatar', sans-serif;
   font-family: var(--type-first);
   padding-top: 4em;
   background-color: rgba(241, 234, 201, 0.33);
   height: 30vh;
-  overflow-x: hidden; /* Evita o scroll horizontal indesejado */
+  overflow: hidden !important; /* Evita o scroll horizontal indesejado */
 }
 
 h1, h2, h3, h4, p {
@@ -37,7 +37,7 @@ ul, li {
 
 img {
   display: block;
-  max-width: 100%;
+  /* max-width: 100%; */
 }
 
 button, input {
@@ -64,12 +64,12 @@ a {
   z-index: 99999999999999; /* Garante que o conteúdo fique acima do Parallax */
 }
 
-.parallax {
-  position: fixed; /* Posição fixa para garantir que o Parallax permaneça na tela durante o scroll */
+/* .parallax {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Define um z-index menor para garantir que o Parallax fique atrás do conteúdo */
-}
+  z-index: -1; 
+} */
 
