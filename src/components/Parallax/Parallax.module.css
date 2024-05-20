@@ -53,10 +53,6 @@
   width: 150%;
 }
 
-.testando{
-  display: none;
-}
-
 .layer2 {
   top: -20vh; /* Posição inicial da camada 2 */
   z-index: 3;
