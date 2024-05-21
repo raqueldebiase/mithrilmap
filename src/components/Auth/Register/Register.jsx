@@ -2,50 +2,52 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Importe Link de 'react-router-dom'
 import styles from './Register.module.css';
 import Login from '../Login/Login';
+import { auth } from '../../../firebase'; 
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 const Register = () => {
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-  });
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    // Lógica para lidar com a submissão do formulário de registro
+    try {
+      await auth.createUserWithEmailAndPassword(username, email, password); 
+      alert ('Usuário registrado com sucesso');
+    } catch (error) {
+      console.error ('Erro ao cadastrar novo usuário:', error);
+      alert(error.message);
+    }
   };
 
   return (
     <div className={`${styles.login} modal`}>
       <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleRegister}>
         <input
           className={styles.input}
           type="text"
           name="username"
           placeholder="Username"
-          value={formData.username}
-          onChange={handleChange}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
         <input
           className={styles.input}
           type="email"
           name="email"
           placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           className={styles.input}
           type="password"
           name="password"
           placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <button className={styles.button} type="submit">Register</button>
         <Link className={styles.buttonBack} to="/Login">Back to login</Link>

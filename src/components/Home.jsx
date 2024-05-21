@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { auth, saveReadingProgress, getReadingProgress } from '../firebase'; // Certifique-se de ajustar o caminho conforme necessário
 import styles from './Home.module.css';
 import Modal from './Modal';
 
@@ -35,17 +36,37 @@ const chapters = [
 
 const Home = () => {
   const [readChapters, setReadChapters] = useState([]);
-  const [showModal, setShowModal] = useState(false); // Estado para controlar a exibição do modal
+  const [showModal, setShowModal] = useState(false);
 
-  const toggleChapter = (chapterID) => {
-    setReadChapters(prevState =>
-      prevState.includes(chapterID)
-        ? prevState.filter(id => id !== chapterID)
-        : [...prevState, chapterID]
-    );
+  useEffect(() => {
+    const user = auth.currentUser;
+    if (user) {
+      getReadingProgress(user.uid).then(progress => {
+        const readChapters = Object.keys(progress).filter(chapterId => progress[chapterId].read);
+        setReadChapters(readChapters.map(Number)); // Converte as chaves para números
+      }).catch(error => {
+        console.error('Erro ao recuperar progresso de leitura:', error);
+      });
+    }
+  }, []);
+
+  const toggleChapter = async (chapterID) => {
+    const user = auth.currentUser;
+    if (user) {
+      const newReadChapters = readChapters.includes(chapterID)
+        ? readChapters.filter(id => id !== chapterID)
+        : [...readChapters, chapterID];
+
+      setReadChapters(newReadChapters);
+
+      try {
+        await saveReadingProgress(user.uid, chapterID.toString());
+      } catch (error) {
+        console.error('Erro ao salvar progresso de leitura:', error);
+      }
+    }
   };
 
-  // Verifica se todos os capítulos foram lidos e exibe o modal se sim
   const handleProgressBarComplete = () => {
     if (readChapters.length === chapters.length) {
       setShowModal(true);
@@ -61,14 +82,14 @@ const Home = () => {
       <div className={styles.chapters}>
         <ChapterList chapters={chapters} readChapters={readChapters} toggleChapter={toggleChapter} />
       </div>
-      {showModal && <Modal onClose={() => setShowModal(false)} />} {/* Renderiza o modal se showModal for true */}
+      {showModal && <Modal onClose={() => setShowModal(false)} />}
     </div>
   );
 };
+
 const ProgressBar = ({ total, completed, onComplete }) => {
   const percentage = (completed / total) * 100;
 
-  // Chama a função onComplete quando a barra estiver completa
   if (percentage >= 100) {
     onComplete();
   }
