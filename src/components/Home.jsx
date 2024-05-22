@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { auth, saveReadingProgress, getReadingProgress } from '../firebase'; // Certifique-se de ajustar o caminho conforme necessário
+import { auth, firestore, saveReadingProgress, getReadingProgress } from '../firebase'; // Certifique-se de ajustar o caminho conforme necessário
 import styles from './Home.module.css';
 import Modal from './Modal';
 

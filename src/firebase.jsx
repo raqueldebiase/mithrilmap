@@ -1,17 +1,17 @@
-// src/firebase.js
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 import { getFirestore, collection, doc, setDoc, getDocs, serverTimestamp } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB-qslKDQjWMM8r9nIRAVPCSvjI7h2GSq8",
-  authDomain: "gandalf-a8023.firebaseapp.com",
-  projectId: "gandalf-a8023",
-  storageBucket: "gandalf-a8023.appspot.com",
-  messagingSenderId: "94615992892",
-  appId: "1:94615992892:web:12ec2c6f7777d21e5c6139",
-  measurementId: "G-1G7RB3DTV8"
+  apiKey: "AIzaSyDQchOM95h2SyjqUxe8ut5lUH2J9e4sOYo",
+  authDomain: "gandalf-f8f67.firebaseapp.com",
+  projectId: "gandalf-f8f67",
+  storageBucket: "gandalf-f8f67.appspot.com",
+  messagingSenderId: "321780663035",
+  appId: "1:321780663035:web:d481af5a495ac046d5265e",
+  measurementId: "G-3YKDYE2JKW",
+  databaseURL: "https://gandalf-f8f67.firebaseio.com"
 };
 
 // Inicializar Firebase
@@ -52,3 +52,4 @@ export const getReadingProgress = async (userId) => {
     console.error('Erro ao recuperar progresso de leitura:', error);
   }
 };
+

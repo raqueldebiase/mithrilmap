@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Importe Link de 'react-router-dom'
 import styles from './Register.module.css';
-import Login from '../Login/Login';
 import { auth } from '../../../firebase'; 
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
@@ -13,10 +12,10 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await auth.createUserWithEmailAndPassword(username, email, password); 
-      alert ('Usuário registrado com sucesso');
+      await createUserWithEmailAndPassword(auth, email, password); // Use a função diretamente
+      alert('Usuário registrado com sucesso');
     } catch (error) {
-      console.error ('Erro ao cadastrar novo usuário:', error);
+      console.error('Erro ao cadastrar novo usuário:', error);
       alert(error.message);
     }
   };
