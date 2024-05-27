@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { auth, firestore, saveReadingProgress, getReadingProgress } from '../firebase'; // Certifique-se de ajustar o caminho conforme necessário
+import { auth, saveReadingProgress, getReadingProgress } from '../firebase'; // Certifique-se de ajustar o caminho conforme necessário
 import styles from './Home.module.css';
 import Modal from './Modal';
 
@@ -34,6 +34,7 @@ const chapters = [
   { id: 28, title: 'O Silmarillion: ler “Dos Anéis do Poder e da Terceira Era”, partindo do 31º parágrafo.' },
 ];
 
+
 const Home = () => {
   const [readChapters, setReadChapters] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -42,8 +43,10 @@ const Home = () => {
     const user = auth.currentUser;
     if (user) {
       getReadingProgress(user.uid).then(progress => {
-        const readChapters = Object.keys(progress).filter(chapterId => progress[chapterId].read);
-        setReadChapters(readChapters.map(Number)); // Converte as chaves para números
+        if (progress) {
+          const readChapters = Object.keys(progress).filter(chapterId => progress[chapterId].read);
+          setReadChapters(readChapters.map(Number)); // Converte as chaves para números
+        }
       }).catch(error => {
         console.error('Erro ao recuperar progresso de leitura:', error);
       });

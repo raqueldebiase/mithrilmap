@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuthProvider } from './assets/AuthContext';
+import { AuthProvider } from './AuthContext';
 import Register from './components/Auth/Register/Register';
 import Login from './components/Auth/Login/Login';
 import Home from './components/Home';

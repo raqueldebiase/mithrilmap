@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth";
+import { getAuth, setPersistence, browserLocalPersistence, onAuthStateChanged } from "firebase/auth"; // Importe setPersistence e browserLocalPersistence
 import { getFirestore, collection, doc, setDoc, getDocs, serverTimestamp } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -19,6 +19,15 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const firestore = getFirestore(app);
+
+// Configuração da persistência do estado de autenticação
+setPersistence(auth, browserLocalPersistence)
+  .then(() => {
+    console.log("Persistência de autenticação configurada para LOCAL");
+  })
+  .catch((error) => {
+    console.error("Erro ao configurar persistência de autenticação:", error);
+  });
 
 export { auth, firestore };
 
@@ -52,4 +61,10 @@ export const getReadingProgress = async (userId) => {
     console.error('Erro ao recuperar progresso de leitura:', error);
   }
 };
+
+// Configuração da persistência do estado de autenticação
+// Neste exemplo, estamos utilizando a persistência LOCAL para manter o usuário autenticado mesmo após a atualização da página
+// Outras opções são: 'session' e 'none'
+// Você pode escolher a opção que melhor se adequa às necessidades do seu aplicativo
+setPersistence(auth, browserLocalPersistence, onAuthStateChanged);
 

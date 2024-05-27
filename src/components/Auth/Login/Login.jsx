@@ -1,25 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
 import { Link } from 'react-router-dom';
-import Register from '../Register/Register';
 import { auth } from '../../../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { AuthContext } from '../../../AuthContext'; // Corrigido o caminho do import
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const { setCurrentUser } = useContext(AuthContext); // Obtemos a função setCurrentUser do contexto
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await auth.signInWithEmailAndPassword(email, password);
-      alert('Usuário logado com sucesso');
+      await signInWithEmailAndPassword(auth, email, password);
+      setCurrentUser(auth.currentUser); // Atualizamos o estado do usuário no contexto
+      navigate('/home');
     } catch (error) {
-      console.error ('Erro ao logar o usuário:', error);
+      console.error('Erro ao logar o usuário:', error);
       alert(error.message);
     }
   };
-
 
   return (
     <div className={`${styles.login} modal`}>
@@ -29,7 +32,7 @@ const Login = () => {
           className={styles.input}
           type="text"
           name="usernameOrEmail"
-          placeholder="Username or Email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
