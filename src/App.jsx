@@ -12,25 +12,27 @@ import Parallax from './components/Parallax/Parallax';
 
 const App = () => {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <div className="app-container">
-          <Header />
-          <Routes>
-            {/* Definindo a página de login como a página inicial */}
-            <Route path='/' element={<Login />} />
-            {/* Rota para a página de home */}
-            <Route path='/home' element={<Home />} />
-            {/* Rota para a página de login */}
-            <Route path='/login/*' element={<Login />} />
-            {/* Rota para a página de registro */}
-            <Route path='/register/*' element={<Register />} />
-          </Routes>
-          <Footer />
-        </div>
-        <Parallax />
-      </BrowserRouter>
-    </AuthProvider>
+    <React.StrictMode>
+      <AuthProvider>
+        <BrowserRouter>
+          <div className="app-container">
+            <Header />
+            <Routes>
+              {/* Definindo a página de login como a página inicial */}
+              <Route path='/' element={<Login />} />
+              {/* Rota para a página de home */}
+              <Route path='/home' element={<Home />} />
+              {/* Rota para a página de login */}
+              <Route path='/login/*' element={<Login />} />
+              {/* Rota para a página de registro */}
+              <Route path='/register/*' element={<Register />} />
+            </Routes>
+            <Footer />
+          </div>
+          <Parallax />
+        </BrowserRouter>
+      </AuthProvider>
+    </React.StrictMode>
   );
 };
 

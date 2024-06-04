@@ -79,9 +79,45 @@
   transform: translateX(100%); /* Move o elemento 100% para a direita quando clicado */
 }
 
+.exitDiv {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+
+  
+}
+
+.exitDiv button {
+  border: none;
+  background-color: rgba(2, 45, 20, 0.8); /* Fundo com 80% de opacidade */
+  padding: 4px 16px;
+  border-radius: 5px;
+  color: #BFC76C;
+  font-family: var(--type-tirth);
+  font-weight: 300;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.exitDiv button:hover {
+  border: none;
+  background-color: rgba(2, 45, 20, 0.8); /* Fundo com 80% de opacidade */
+  padding: 4px 16px;
+  border-radius: 5px;
+  color: #BFC76C;
+  font-family: var(--type-tirth);
+  font-weight: 300;
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 0 0 4px #093F20, 0 0 0 1px #093F20;
+  transition: 0.4s;
+}
 
 
-
+.finalMessage {
+  display: none;
+}
 
 
 

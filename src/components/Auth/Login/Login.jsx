@@ -4,19 +4,19 @@ import styles from './Login.module.css';
 import { Link } from 'react-router-dom';
 import { auth } from '../../../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { AuthContext } from '../../../AuthContext'; // Corrigido o caminho do import
+import { AuthContext } from '../../../AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const { setCurrentUser } = useContext(AuthContext); // Obtemos a função setCurrentUser do contexto
+  const { setCurrentUser } = useContext(AuthContext);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      setCurrentUser(auth.currentUser); // Atualizamos o estado do usuário no contexto
+      setCurrentUser(auth.currentUser);
       navigate('/home');
     } catch (error) {
       console.error('Erro ao logar o usuário:', error);

@@ -1,63 +1,50 @@
-import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styles from './Header.module.css';
 import profileWizard from '../assets/profilewizard.png';
-import { AuthContext } from '../AuthContext'; // alteração aqui
-import Modal from 'react-modal'; // importe a biblioteca react-modal
+import { useAuth } from '../AuthContext'; // Usar o hook personalizado para acessar o contexto
+import GandalfMessage from './gandalfMessage';
+import { auth } from '../firebase'; // Certifique-se de que o caminho esteja correto
 
 const Header = () => {
-  const { currentUser } = useContext(AuthContext);
-  const [isModalOpen, setIsModalOpen] = useState(false); // estado para controlar a exibição do modal
+  const { currentUser, setCurrentUser } = useAuth();
+  const [showModal, setShowModal] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleMouseOver = () => {
-    setIsModalOpen(true);
+  const handleMouseEnter = () => {
+    setShowModal(true);
   };
 
   const handleMouseLeave = () => {
-    setIsModalOpen(false);
+    setShowModal(false);
   };
+
+  const handleLogout = () => {
+    setCurrentUser(null); // Limpa o estado do usuário no contexto
+    auth.signOut(); // Desloga do Firebase
+    navigate('/Login'); // Redireciona para a página de login
+  };
+
+  const isLoginPage = location.pathname === '/Login';
+  const isRegisterPage = location.pathname === '/Register';
+  const renderModal = isLoginPage || isRegisterPage;
 
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
         <p className={styles.logoTitle} to="/" aria-label='Home'>In Gandalf we trust</p>
-        <div 
-          className={styles.profileImg} 
-          onMouseOver={handleMouseOver} 
-          onMouseLeave={handleMouseLeave}
-        >
+        <Link className={styles.profileImg} to="/Login">
           <img 
             src={profileWizard} 
             alt="Wizard" 
             className={currentUser ? styles.imageLoggedIn : ''}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           />
-        </div>
+        </Link>
       </nav>
-      {/* Modal */}
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={handleMouseLeave}
-        style={{
-          overlay: {
-            backgroundColor: 'rgba(0, 0, 0, 0)',
-            zIndex: 9999
-          },
-          content: {
-            position: 'absolute',
-            top: '10%', // ajuste conforme necessário
-            right: '0px', // ajuste conforme necessário
-            border: 'none',
-            background: '#fff',
-            padding: '20px',
-            borderRadius: '5px',
-            maxWidth: '30%',
-            maxHeight: '20%'
-          }
-        }}
-      >
-        {/* Conteúdo do modal */}
-        <p>Modal content here</p>
-      </Modal>
+      {showModal && renderModal && <GandalfMessage onClose={() => setShowModal(false)} />}
     </header>
   );
 }

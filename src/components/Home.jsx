@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { auth, saveReadingProgress, getReadingProgress } from '../firebase'; // Certifique-se de ajustar o caminho conforme necessário
+import { useNavigate } from 'react-router-dom';
+import { saveReadingProgress, getReadingProgress, resetReadingProgress } from '../firebase';
+import { auth, firestore } from '../firebase'; // Certifique-se de importar auth
 import styles from './Home.module.css';
 import Modal from './Modal';
+
+
 
 const chapters = [
   { id: 1, title: 'O Silmarillon: Ainulindalë' },
@@ -34,40 +38,70 @@ const chapters = [
   { id: 28, title: 'O Silmarillion: ler “Dos Anéis do Poder e da Terceira Era”, partindo do 31º parágrafo.' },
 ];
 
-
 const Home = () => {
   const [readChapters, setReadChapters] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user = auth.currentUser;
     if (user) {
-      getReadingProgress(user.uid).then(progress => {
+      const fetchProgress = async () => {
+        const progress = await getReadingProgress(user.uid);
         if (progress) {
-          const readChapters = Object.keys(progress).filter(chapterId => progress[chapterId].read);
-          setReadChapters(readChapters.map(Number)); // Converte as chaves para números
+          setReadChapters(Object.keys(progress).map(key => parseInt(key)));
         }
-      }).catch(error => {
-        console.error('Erro ao recuperar progresso de leitura:', error);
-      });
+      };
+      fetchProgress();
     }
   }, []);
+
+  useEffect(() => {
+    const storedProgress = localStorage.getItem('readingProgress');
+    if (storedProgress) {
+      setReadChapters(JSON.parse(storedProgress));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('readingProgress', JSON.stringify(readChapters));
+    handleProgressBarComplete();
+  }, [readChapters]);
 
   const toggleChapter = async (chapterID) => {
     const user = auth.currentUser;
     if (user) {
-      const newReadChapters = readChapters.includes(chapterID)
+      const updatedReadChapters = readChapters.includes(chapterID)
         ? readChapters.filter(id => id !== chapterID)
         : [...readChapters, chapterID];
-
-      setReadChapters(newReadChapters);
-
-      try {
-        await saveReadingProgress(user.uid, chapterID.toString());
-      } catch (error) {
-        console.error('Erro ao salvar progresso de leitura:', error);
-      }
+  
+      setReadChapters(updatedReadChapters);
+      await saveReadingProgress(user.uid, chapterID.toString()); // Converter para string
     }
+  };
+
+  const handleResetProgress = async () => {
+    const user = auth.currentUser;
+    if (user) {
+      await resetReadingProgress(user.uid);
+      setReadChapters([]);
+      setShowModal(false); // Definir showModal como false ao redefinir o progresso
+    }
+  };
+
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    const user = auth.currentUser;
+    if (user) {
+      resetReadingProgress(user.uid); // Redefinir o progresso de leitura no Firebase
+    }
+  };
+  
+
+  const handleLogout = () => {
+    localStorage.removeItem('readingProgress');
+    navigate('/Login');
   };
 
   const handleProgressBarComplete = () => {
@@ -85,7 +119,12 @@ const Home = () => {
       <div className={styles.chapters}>
         <ChapterList chapters={chapters} readChapters={readChapters} toggleChapter={toggleChapter} />
       </div>
-      {showModal && <Modal onClose={() => setShowModal(false)} />}
+      {showModal && <Modal onClose={handleCloseModal} />}
+      <div className={styles.exitDiv}>
+        <button onClick={handleResetProgress}>Reset Progress</button>
+        <button className={styles.exit} onClick={handleLogout}>Exit</button>
+      </div>
+      
     </div>
   );
 };
@@ -93,9 +132,11 @@ const Home = () => {
 const ProgressBar = ({ total, completed, onComplete }) => {
   const percentage = (completed / total) * 100;
 
-  if (percentage >= 100) {
-    onComplete();
-  }
+  useEffect(() => {
+    if (percentage >= 100) {
+      onComplete();
+    }
+  }, [percentage, onComplete]);
 
   return (
     <div className={styles.progressContainer}>

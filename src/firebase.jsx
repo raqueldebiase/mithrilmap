@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, setPersistence, browserLocalPersistence, onAuthStateChanged } from "firebase/auth"; // Importe setPersistence e browserLocalPersistence
-import { getFirestore, collection, doc, setDoc, getDocs, serverTimestamp } from "firebase/firestore";
+import { getAuth, setPersistence, browserLocalPersistence } from "firebase/auth";
+import { getFirestore, collection, doc, setDoc, getDocs, serverTimestamp, writeBatch } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDQchOM95h2SyjqUxe8ut5lUH2J9e4sOYo",
@@ -14,13 +14,11 @@ const firebaseConfig = {
   databaseURL: "https://gandalf-f8f67.firebaseio.com"
 };
 
-// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const firestore = getFirestore(app);
 
-// Configuração da persistência do estado de autenticação
 setPersistence(auth, browserLocalPersistence)
   .then(() => {
     console.log("Persistência de autenticação configurada para LOCAL");
@@ -31,12 +29,12 @@ setPersistence(auth, browserLocalPersistence)
 
 export { auth, firestore };
 
-// Funções para salvar e recuperar os dados de leitura do usuário no Firestore.
-
 export const saveReadingProgress = async (userId, chapterId) => {
   try {
     const userDocRef = doc(firestore, 'users', userId);
-    const readingProgressRef = doc(userDocRef, 'readingProgress', chapterId);
+    console.log("Chapter ID:", chapterId);
+    const readingProgressRef = doc(userDocRef, 'readingProgress', chapterId.toString());
+    
     await setDoc(readingProgressRef, {
       read: true,
       timestamp: serverTimestamp(),
@@ -46,7 +44,6 @@ export const saveReadingProgress = async (userId, chapterId) => {
   }
 };
 
-// Recuperar os dados das leituras
 export const getReadingProgress = async (userId) => {
   try {
     const userDocRef = doc(firestore, 'users', userId);
@@ -62,9 +59,24 @@ export const getReadingProgress = async (userId) => {
   }
 };
 
-// Configuração da persistência do estado de autenticação
-// Neste exemplo, estamos utilizando a persistência LOCAL para manter o usuário autenticado mesmo após a atualização da página
-// Outras opções são: 'session' e 'none'
-// Você pode escolher a opção que melhor se adequa às necessidades do seu aplicativo
-setPersistence(auth, browserLocalPersistence, onAuthStateChanged);
+export const resetReadingProgress = async (userId) => {
+  try {
+    
+    const userDocRef = doc(firestore, 'users', userId);
+    const readingProgressRef = collection(userDocRef, 'readingProgress');
+    const snapshot = await getDocs(readingProgressRef);
 
+    // Criar uma nova instância do batch
+    const batch = writeBatch(firestore);
+
+    snapshot.forEach(doc => {
+      batch.delete(doc.ref);
+    });
+
+    await batch.commit();
+  } catch (error) {
+    console.error('Erro ao redefinir progresso de leitura:', error);
+  }
+};
+
+export const firebaseInstance = app;
