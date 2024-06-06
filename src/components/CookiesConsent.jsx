@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import styles from './CookieConsent.module.css';
 
@@ -26,7 +27,7 @@ const CookieConsent = ({ onAccept }) => {
     <div className={styles.cookieConsentBanner}>
       <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
       <div>
-        <a href="/cookies-policy">Learn more</a>
+        <Link to='/cookies-policy'>Learn more</Link>
         <button onClick={handleAccept}>Accept</button>
       </div>
     </div>
