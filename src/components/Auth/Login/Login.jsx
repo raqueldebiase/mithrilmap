@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { auth } from '../../../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { AuthContext } from '../../../AuthContext';
-import CookieConsent from '../../CookiesConsent'; // Importe o componente CookieConsent
+import CookieConsent from '../../CookiesConsent';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -16,7 +16,9 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      console.log("Tentando logar usuário:", email);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      console.log("Usuário logado com sucesso:", userCredential.user);
       setCurrentUser(auth.currentUser);
       navigate('/home');
     } catch (error) {
@@ -31,8 +33,8 @@ const Login = () => {
       <form onSubmit={handleLogin}>
         <input
           className={styles.input}
-          type="text"
-          name="usernameOrEmail"
+          type="email"
+          name="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
