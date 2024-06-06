@@ -1,39 +1,39 @@
-.cookieconsentbanner {
+.cookieConsentBanner {
   padding-top: 3rem;
 }
 
-.cookieconsentbanner p {
-  max-width: 75%;
+.cookieConsentBanner p {
+  max-width: 50%;
   text-align: center;
   margin: auto;
   padding-bottom: 1rem;
   font-size: 0.8rem;
 } 
 
-.cookieconsentbanner div {
-  display: grid;
+.cookieConsentBanner div {
+  display: flex;
   flex-wrap: nowrap;
   justify-content: center;
   place-items: center;
-  padding: 18px 0;
   gap: 16px;
   font-size: 0.7rem;
 }
 
-.cookieconsentbanner div a:hover{
+.cookieConsentBanner div a:hover{
   text-decoration: underline;
 }
 
-.cookieconsentbanner button {
+.cookieConsentBanner button {
   background-color: transparent;
   border: 1px solid #3e3e3e75;
   padding: 8px 24px;
   border-radius: 3px;
   font-size: 0.8rem;
+  cursor: pointer;
 }
 
-.cookieconsentbanner button :hover,
-.cookieconsentbanner button :focus{
+.cookieConsentBanner button:hover,
+.cookieConsentBanner button:focus{
   outline: none;
   box-shadow: 0 0 0 3px #fea, 0 0 0 4px #fb1;
   transition: 0.2s;

@@ -2,21 +2,24 @@
   height: 100%;
   border-radius: 1.25rem;
   background: rgba(243, 240, 230, 0.92);
-  width: 32rem;
+  width: 60%;
   height: 100%;
   flex-shrink: 0;
   margin: auto;
   padding: 3rem;
   text-align: center;
-  margin-top: 8rem;
+  margin-top: 4rem;
   position: relative;
   z-index: 5;
 }
 
 h2 {
-  color: #023216;
+  color: #3E3E3E;
   text-align: center;
   font-size: 1.7rem;
+  font-family: var(--type-tirth);
+  padding: 1rem 0;
+  font-weight: 400;
 }
 
 .wrapper {
@@ -25,21 +28,24 @@ h2 {
 }
 
 form{
-  margin-top: 3rem;
+  display: grid;
+  place-items: center;
+  width: 50%;
+  margin: auto;
+  margin-top: 1rem;
 }
 
 .input {
-  border: 1px solid #eee;
+  border: 1px solid #A7DAC7;
   display: block;
   width: 100%;
   font-size: 1rem;
   padding: .8rem;
   border-radius: 0.4rem;
-  background: #eee;
+  background: #a7dac761;
   transition: 0.2s;
   margin-bottom: 2rem;
 }
-
 .input:focus,
 .input:hover {
   outline: none;

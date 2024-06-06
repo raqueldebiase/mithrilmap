@@ -37,12 +37,7 @@ const CookiesPolicy = () => {
             How do we use cookies?
           </h2>
           <Collapse isOpened={isOpen.howWeUseCookies}>
-            <p>We use cookies to:</p>
-            <ul>
-              <li>Store reading progress of chapters.</li>
-              <li>Remember your preferences and settings.</li>
-              <li>Improve site functionality.</li>
-            </ul>
+            <p>We use cookies to store reading processo of the chapters, remember your preferences and settings and improve site functionalities.</p>
           </Collapse>
         </div>
 
@@ -51,10 +46,7 @@ const CookiesPolicy = () => {
             Types of cookies we use
           </h2>
           <Collapse isOpened={isOpen.typesOfCookies}>
-            <ul>
-              <li>Necessary cookies: Essential for the site to function.</li>
-              <li>Functionality cookies: Remember your choices and improve your experience.</li>
-            </ul>
+            <p>We are using functionality cookiers, for remember your choices and improve your experience.</p>
           </Collapse>
         </div>
 

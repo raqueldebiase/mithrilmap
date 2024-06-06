@@ -22,7 +22,7 @@ const Register = () => {
 
   return (
     <div className={`${styles.login} modal`}>
-      <h2>Register</h2>
+      <h2>Start your journey, join the fellowship!</h2>
       <form onSubmit={handleRegister}>
         <input
           className={styles.input}
