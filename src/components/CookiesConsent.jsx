@@ -13,7 +13,7 @@ const CookieConsent = ({ onAccept }) => {
   }, []);
 
   const handleAccept = () => {
-    Cookies.set('consent', 'accepted', { expires: 1 / (24 * 12) }); // Expira em 5 minutos
+    Cookies.set('consent', 'accepted', { expires: 1 / (24 * 12), sameSite: 'None', secure: true });
     setShowBanner(false);
     if (onAccept) {
       onAccept();

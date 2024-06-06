@@ -66,7 +66,9 @@ const Header = ({ onResetProgress }) => {
             alt="Wizard" 
             className={`${styles.profileImg} ${currentUser ? styles.imageLoggedIn : ''}`}
             onClick={handleProfileClick}
-            style={{ cursor: location.pathname === '/home' ? 'pointer' : 'default' }}
+            style={{ cursor: location.pathname === '/home' ? 'pointer' : 'default',
+            opacity: location.pathname === '/Login' ? 0.5 : 1
+             }}
           />
           {currentUser && location.pathname === '/home' && showMenu && (
             <div className={styles.profileMenu}>
