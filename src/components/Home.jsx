@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 import { saveReadingProgress, getReadingProgress, resetReadingProgress } from '../firebase';
 import { auth, firestore } from '../firebase'; // Certifique-se de importar auth
 import styles from './Home.module.css';
@@ -8,64 +9,76 @@ import Modal from './Modal';
 
 
 const chapters = [
-  { id: 1, title: 'O Silmarillon: Ainulindalë' },
-  { id: 2, title: 'O Silmarillon: Valaquenta' },
-  { id: 3, title: 'O Silmarillon: Quenta Silmarillion (até o fim do capítulo XVIII)' },
-  { id: 4, title: 'Beren e Lúthien: ler o livro completo' },
-  { id: 5, title: 'O Silmarillon: ler o capítulo XX' },
-  { id: 6, title: 'Os Filhos de Húrin: ler o livro completo OU O Silmarillon: ler o capítulo XXI' },
-  { id: 7, title: 'Contos Inacabados: ler o Capítulo I da primeira parte dos Contos Inacabados “De Tuor e da sua chegada a Gondolin' },
-  { id: 8, title: 'O Silmarillon: prosseguir com a leitura do livro O Silmarillon na parte “Quenta Silmarillion”, capítulos XXIII e XXIV' },
-  { id: 9, title: 'Contos Inacabados (II parte): ler os capítulos:  I – Uma descrição da ilha de Númenor, II – Aldarion e Erendis, III – A linhagem de Elros: Reis de Númenor.' },
-  { id: 10, title: 'O Silmarillon: ler por completo o “Akallabêth”' },
-  { id: 11, title: 'Contos Inacabados: ler na segunda parte o capítulo IV “A História de Galadriel e Celeborn”' },
-  { id: 12, title: 'O Silmarillon: ler “Dos Anéis do Poder e da Terceira Era” até o 30º parágrafo.' },
-  { id: 13, title: 'Contos Inacabados: ler “Desastre dos Campos de Lis”.' },
-  { id: 14, title: 'O Senhor dos Anéis, O Retorno do Rei, o Apêndice “A”: ler os apêndices “Anais dos Reis e Governantes”, até o fim do tópico IV “Gondor e os herdeiros de anárion”.' },
-  { id: 15, title: 'Contos Inacabados: ler o capítulo “Cirion e Eorl e a amizade entre Gondor e Rohan”' },
-  { id: 16, title: 'O Senhor dos Anéis, O Retorno do Rei: ler por completo o segundo tópico “A casa de Eorl”.' },
-  { id: 17, title: 'O Senhor dos Anéis, O Retorno do Rei, no Apêndice “A”: ler o tópico  “parte da história de Arwen e Aragorn”.' },
-  { id: 18, title: 'Contos Inacabados: ler a quarta parte na seguinte ordem: “Os Istari”, “Os Palantiri”, “Os Druedan”,' },
-  { id: 19, title: 'O Senhor dos Anéis, O Retorno do Rei, no Apêndice “A”: ler o tópico “O Povo de Durin”.' },
-  { id: 20, title: 'Contos Inacabados, terceira parte: ler “A Busca de Erebor”.' },
-  { id: 21, title: 'O Hobbit: ler o livro por completo' },
-  { id: 22, title: 'O Senhor dos Anéis: A Sociedade do Anel: ler o livro por completo' },
-  { id: 23, title: 'Contos Inacabados: ler o capítulo "A Caçada ao Anel".' },
-  { id: 24, title: 'O Senhor dos Anéis: As Duas Torres: ler o primeiro capítulo.' },
-  { id: 25, title: 'Contos Inacabados: ler o capítulo “As Batalhas dos Vaus do Isen”.' },
-  { id: 26, title: 'O Senhor dos Anéis, as Duas Torres: ler do segundo capítulo até o final do livro.' },
-  { id: 27, title: 'O Senhor dos Anéis, O Retorno do Rei: ler o livro por completo.' },
-  { id: 28, title: 'O Silmarillion: ler “Dos Anéis do Poder e da Terceira Era”, partindo do 31º parágrafo.' },
+  { id: 1, title: 'The Silmarillion: Ainulindalë' },
+  { id: 2, title: 'The Silmarillion: Valaquenta' },
+  { id: 3, title: 'The Silmarillion: Quenta Silmarillion (up to the end of Chapter XVIII)' },
+  { id: 4, title: 'Beren and Lúthien: read the entire book' },
+  { id: 5, title: 'The Silmarillion: read Chapter XX' },
+  { id: 6, title: 'The Children of Húrin: read the entire book OR The Silmarillion: read Chapter XXI' },
+  { id: 7, title: 'Unfinished Tales: read Chapter I of the first part of Unfinished Tales “Of Tuor and his coming to Gondolin”' },
+  { id: 8, title: 'The Silmarillion: continue reading The Silmarillion in the part “Quenta Silmarillion”, chapters XXIII and XXIV' },
+  { id: 9, title: 'Unfinished Tales (Part II): read the chapters: I – A Description of the Island of Númenor, II – Aldarion and Erendis, III – The Line of Elros: Kings of Númenor' },
+  { id: 10, title: 'The Silmarillion: read “Akallabêth” in its entirety' },
+  { id: 11, title: 'Unfinished Tales: read in the second part Chapter IV “The History of Galadriel and Celeborn”' },
+  { id: 12, title: 'The Silmarillion: read “Of the Rings of Power and the Third Age” up to the 30th paragraph.' },
+  { id: 13, title: 'Unfinished Tales: read “The Disaster of the Gladden Fields”.' },
+  { id: 14, title: 'The Lord of the Rings, The Return of the King, Appendix “A”: read the appendices “Annals of the Kings and Rulers”, up to the end of topic IV “Gondor and the heirs of Anárion”.' },
+  { id: 15, title: 'Unfinished Tales: read the chapter “Cirion and Eorl and the Friendship of Gondor and Rohan”' },
+  { id: 16, title: 'The Lord of the Rings, The Return of the King: read the entire second topic “The House of Eorl”.' },
+  { id: 17, title: 'The Lord of the Rings, The Return of the King, in Appendix “A”: read the topic “part of the story of Arwen and Aragorn”.' },
+  { id: 18, title: 'Unfinished Tales: read the fourth part in the following order: “The Istari”, “The Palantíri”, “The Drúedain”,' },
+  { id: 19, title: 'The Lord of the Rings, The Return of the King, in Appendix “A”: read the topic “The People of Durin”.' },
+  { id: 20, title: 'Unfinished Tales, third part: read “The Quest of Erebor”.' },
+  { id: 21, title: 'The Hobbit: read the entire book' },
+  { id: 22, title: 'The Lord of the Rings: The Fellowship of the Ring: read the entire book' },
+  { id: 23, title: 'Unfinished Tales: read the chapter "The Hunt for the Ring".' },
+  { id: 24, title: 'The Lord of the Rings: The Two Towers: read the first chapter.' },
+  { id: 25, title: 'Unfinished Tales: read the chapter “The Battles of the Fords of Isen”.' },
+  { id: 26, title: 'The Lord of the Rings, The Two Towers: read from the second chapter to the end of the book.' },
+  { id: 27, title: 'The Lord of the Rings, The Return of the King: read the entire book.' },
+  { id: 28, title: 'The Silmarillion: read “Of the Rings of Power and the Third Age”, starting from the 31st paragraph.' },
 ];
+
+
 
 const Home = () => {
   const [readChapters, setReadChapters] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
+  // Carregar progresso dos cookies na montagem do componente
+  useEffect(() => {
+    const storedProgress = Cookies.get('readingProgress');
+    if (storedProgress) {
+      setReadChapters(JSON.parse(storedProgress));
+    }
+  }, []);
+
+  // Carregar progresso do Firebase após a montagem do componente
   useEffect(() => {
     const user = auth.currentUser;
     if (user) {
       const fetchProgress = async () => {
         const progress = await getReadingProgress(user.uid);
         if (progress) {
-          setReadChapters(Object.keys(progress).map(key => parseInt(key)));
+          const progressChapters = Object.keys(progress).map(key => parseInt(key));
+          setReadChapters(prevState => {
+            const combinedState = [...new Set([...prevState, ...progressChapters])];
+            Cookies.set('readingProgress', JSON.stringify(combinedState));
+            return combinedState;
+          });
         }
       };
       fetchProgress();
     }
   }, []);
 
+  // Atualizar cookies sempre que readChapters mudar
   useEffect(() => {
-    const storedProgress = localStorage.getItem('readingProgress');
-    if (storedProgress) {
-      setReadChapters(JSON.parse(storedProgress));
+    if (readChapters.length > 0) {
+      Cookies.set('readingProgress', JSON.stringify(readChapters));
+      handleProgressBarComplete();
     }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('readingProgress', JSON.stringify(readChapters));
-    handleProgressBarComplete();
   }, [readChapters]);
 
   const toggleChapter = async (chapterID) => {
@@ -74,9 +87,9 @@ const Home = () => {
       const updatedReadChapters = readChapters.includes(chapterID)
         ? readChapters.filter(id => id !== chapterID)
         : [...readChapters, chapterID];
-  
+
       setReadChapters(updatedReadChapters);
-      await saveReadingProgress(user.uid, chapterID.toString()); // Converter para string
+      await saveReadingProgress(user.uid, chapterID.toString());
     }
   };
 
@@ -85,10 +98,10 @@ const Home = () => {
     if (user) {
       await resetReadingProgress(user.uid);
       setReadChapters([]);
-      setShowModal(false); // Definir showModal como false ao redefinir o progresso
+      setShowModal(false);
+      Cookies.remove('readingProgress'); // Limpar cookies ao redefinir o progresso
     }
   };
-
 
   const handleCloseModal = () => {
     setShowModal(false);
@@ -97,10 +110,9 @@ const Home = () => {
       resetReadingProgress(user.uid); // Redefinir o progresso de leitura no Firebase
     }
   };
-  
 
   const handleLogout = () => {
-    localStorage.removeItem('readingProgress');
+    Cookies.remove('readingProgress');
     navigate('/Login');
   };
 
@@ -124,7 +136,6 @@ const Home = () => {
         <button onClick={handleResetProgress}>Reset Progress</button>
         <button className={styles.exit} onClick={handleLogout}>Exit</button>
       </div>
-      
     </div>
   );
 };

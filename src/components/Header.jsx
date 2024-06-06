@@ -33,7 +33,11 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
-        <p className={styles.logoTitle} to="/" aria-label='Home'>In Gandalf we trust</p>
+      <div>
+      <h1>MithrilMap</h1>
+      <p className={styles.logoTitle} to="/" aria-label='Home'>In Gandalf we trust</p>
+      </div>
+  
         <Link className={styles.profileImg} to="/Login">
           <img 
             src={profileWizard} 

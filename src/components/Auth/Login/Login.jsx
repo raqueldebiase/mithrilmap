@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { auth } from '../../../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { AuthContext } from '../../../AuthContext';
+import CookieConsent from '../../CookiesConsent'; // Importe o componente CookieConsent
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -47,6 +48,7 @@ const Login = () => {
         <button className={styles.button} type="submit">Login</button>
         <Link className={styles.register} to="/Register">Not register yet? Click here</Link>
       </form>
+      <CookieConsent />
     </div>
   );
 };

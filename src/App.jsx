@@ -9,6 +9,8 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Parallax from './components/Parallax/Parallax';
+import CookieConsent from './components/CookiesConsent'; // Importe o componente CookieConsent
+import CookiesPolicy from './components/CookiesPolicy';
 
 const App = () => {
   return (
@@ -26,6 +28,8 @@ const App = () => {
               <Route path='/login/*' element={<Login />} />
               {/* Rota para a página de registro */}
               <Route path='/register/*' element={<Register />} />
+              {/* Rota para a política de cookies */}
+              <Route path='/cookies-policy' element={<CookiesPolicy />} />
             </Routes>
             <Footer />
           </div>

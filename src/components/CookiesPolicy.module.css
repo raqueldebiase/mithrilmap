@@ -1,0 +1,80 @@
+.policyContainer {
+  margin-top: 4rem;
+  padding: 3rem;
+  border-radius: 3rem;
+  background: rgba(255, 255, 255, 0.7); /* Fundo semi-transparente */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  backdrop-filter: blur(10px); /* Desfoque do fundo */
+  -webkit-backdrop-filter: blur(10px); /* Suporte para Safari */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Borda semi-transparente */
+  position: relative;
+  color: #000; /* Certifique-se de que o texto está bem legível */
+}
+
+.policyContent {
+  position: relative;
+  z-index: 1;
+  color: #000; /* Certifique-se de que o texto está bem legível */
+}
+
+.title {
+  text-align: center;
+  font-family: var(--type-tirth);
+  font-weight: 300;
+  color: #000; /* Certifique-se de que o título está bem legível */
+  font-size: 1.5rem;
+}
+
+.section {
+  margin-bottom: 1rem;
+}
+
+.sectionTitle {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #000; /* Certifique-se de que o título está bem legível */
+}
+
+.sectionTitle:hover {
+  color: #2D8F58; /* Cor ao passar o mouse */
+}
+
+.policyContainer p{
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  margin:auto;
+  text-align: center;
+  padding: 4px 0;
+  text-align: center;
+  font-family: var(--type-tirth);
+  font-weight: 200;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-bottom: 1rem;
+} 
+
+.policyContent .section {
+  border: 1px solid #c3c3c3;
+  border-radius: 1.2rem;
+  margin: 2rem 0;
+}
+
+.policyContent .section h2{
+  padding: 1.3rem 0;
+  text-align: center;
+  font-family: var(--type-tirth);
+  font-weight: 300;
+  font-size: 1.1rem;
+}
+.policyContainer .section ul {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  list-style: none; /* Remover os marcadores de lista padrão */
+  padding: 0; /* Remover o espaçamento interno padrão */
+  width: 75%;
+  margin: auto;
+  text-align: center;
+}
+
