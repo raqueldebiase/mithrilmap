@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { resetProgressObservable, setResetProgress } from './resetProgressObservable';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styles from './Header.module.css';
-import profileWizard from '../assets/profilewizard.png';
+import profileWizard from '../assets/gandalf8bit.png';
 import { useAuth } from '../AuthContext';
 import GandalfMessage from './gandalfMessage';
 import { auth, resetReadingProgress } from '../firebase';
