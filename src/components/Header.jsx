@@ -77,7 +77,6 @@ const Header = ({ onResetProgress }) => {
         </div>
       </nav>
       {showModal && renderModal && <GandalfMessage onClose={() => setShowModal(false)} />}
-      <div>testando</div>
     </header>
     
   );
