@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { AuthProvider } from './AuthContext';
 import Register from './components/Auth/Register/Register';
 import Login from './components/Auth/Login/Login';
@@ -13,12 +13,18 @@ import CookieConsent from './components/CookiesConsent'; // Importe o componente
 import CookiesPolicy from './components/CookiesPolicy';
 
 const App = () => {
+  const [resetProgress, setResetProgress] = useState(false);
+
+  const handleResetProgress = () => {
+    setResetProgress(true);
+  };
+
   return (
     <React.StrictMode>
       <AuthProvider>
         <BrowserRouter>
           <div className="app-container">
-            <Header />
+            <Header onResetProgress={handleResetProgress} />
             <Routes>
               {/* Definindo a página de login como a página inicial */}
               <Route path='/' element={<Login />} />

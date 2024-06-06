@@ -8,25 +8,26 @@
   display: grid;
   grid-template-columns: 1fr;
   place-items: center;
-  padding: 3rem;
+  padding: 1rem;
 }
 
 .description {
   width: 60%;
-  margin-bottom: 2rem;
+  margin: 1rem 0;
 }
 
 .description p {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   text-align: center;
 }
 
 .copy {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: #3c3c3c;
   align-items: center;
   gap: 0.2rem;
   text-align: center;
+  display: flex;
 }
 .copy div p{
   display: flex;
@@ -35,7 +36,7 @@
   gap: 0.3rem;
 }
 .reactIcon {
-  width: 20px;
+  width: 16px;
   animation: spin 8s linear infinite;
 }
 
@@ -54,11 +55,14 @@
 
 @media screen and (max-width: 999px){
   .description {
-    width: 100%;
+    width: 80%;
   }
 }
 
 @media screen and (max-width: 488px){
+  .description {
+    width: 100%;
+  }
   .description p{
     font-size: 0.7rem;
 

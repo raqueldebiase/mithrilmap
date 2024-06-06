@@ -108,23 +108,22 @@ form{
 
 }
 
-@media screen and (max-width: 767px){
-  .login {
-    margin-top: 10rem;
-    width: 25rem;
-  }
-  .login h2 {
-    font-size: 1.3rem;
+@media screen and (max-width: 1070px){
+  form {
+    width: 75%;
   }
 }
 
-@media screen and (max-width: 550px){
+@media screen and (max-width: 767px){
   .login {
-    margin-top: 5rem;
+    margin-top: 3rem;
     width: 25rem;
   }
   .login h2 {
     font-size: 1.3rem;
+  }
+  form {
+    width: 100%;
   }
 }
 

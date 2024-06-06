@@ -23,6 +23,7 @@ const Register = () => {
   return (
     <div className={`${styles.login} modal`}>
       <h2>Start your journey, join the fellowship!</h2>
+      <p className={styles.messageRegister}><span className={styles.hello}>Hello!</span>! This app is your guide to uncovering and tracking your journey through the works of J.R.R. Tolkien. Keep track of and log your progress in reading the works, following level 2 (intermediate).</p>
       <form onSubmit={handleRegister}>
         <input
           className={styles.input}

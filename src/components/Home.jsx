@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { resetProgressObservable } from './resetProgressObservable';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { saveReadingProgress, getReadingProgress, resetReadingProgress } from '../firebase';
-import { auth, firestore } from '../firebase'; // Certifique-se de importar auth
+import { auth, firestore } from '../firebase';
 import styles from './Home.module.css';
 import Modal from './Modal';
+
 
 
 
@@ -41,12 +43,24 @@ const chapters = [
 
 
 
+
 const Home = () => {
   const [readChapters, setReadChapters] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
-  // Carregar progresso dos cookies na montagem do componente
+  useEffect(() => {
+    const subscription = resetProgressObservable.subscribe(value => {
+      if (value) {
+        handleResetProgress();
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
   useEffect(() => {
     const storedProgress = Cookies.get('readingProgress');
     if (storedProgress) {
@@ -54,7 +68,6 @@ const Home = () => {
     }
   }, []);
 
-  // Carregar progresso do Firebase após a montagem do componente
   useEffect(() => {
     const user = auth.currentUser;
     if (user) {
@@ -73,7 +86,6 @@ const Home = () => {
     }
   }, []);
 
-  // Atualizar cookies sempre que readChapters mudar
   useEffect(() => {
     if (readChapters.length > 0) {
       Cookies.set('readingProgress', JSON.stringify(readChapters));
@@ -99,7 +111,7 @@ const Home = () => {
       await resetReadingProgress(user.uid);
       setReadChapters([]);
       setShowModal(false);
-      Cookies.remove('readingProgress'); // Limpar cookies ao redefinir o progresso
+      Cookies.remove('readingProgress');
     }
   };
 
@@ -107,7 +119,7 @@ const Home = () => {
     setShowModal(false);
     const user = auth.currentUser;
     if (user) {
-      resetReadingProgress(user.uid); // Redefinir o progresso de leitura no Firebase
+      resetReadingProgress(user.uid);
     }
   };
 
@@ -132,10 +144,6 @@ const Home = () => {
         <ChapterList chapters={chapters} readChapters={readChapters} toggleChapter={toggleChapter} />
       </div>
       {showModal && <Modal onClose={handleCloseModal} />}
-      <div className={styles.exitDiv}>
-        <button onClick={handleResetProgress}>Reset Progress</button>
-        <button className={styles.exit} onClick={handleLogout}>Exit</button>
-      </div>
     </div>
   );
 };

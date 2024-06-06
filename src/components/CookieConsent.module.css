@@ -38,3 +38,17 @@
   box-shadow: 0 0 0 3px #fea, 0 0 0 4px #fb1;
   transition: 0.2s;
 }
+
+@media screen and (max-width: 1070px) {
+  .cookieConsentBanner p {
+    max-width: 80%;
+  }
+  
+}
+
+@media screen and (max-width: 450px) {
+  .cookieConsentBanner p {
+    font-size: 0.7rem;
+  }
+  
+}
