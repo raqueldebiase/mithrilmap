@@ -1,7 +1,9 @@
 // src/components/CookiesPolicy.jsx
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Collapse } from 'react-collapse';
 import styles from './CookiesPolicy.module.css';
+import arrow from '../assets/icons8-arrow-24.png';
 
 const CookiesPolicy = () => {
   const [isOpen, setIsOpen] = useState({
@@ -60,6 +62,7 @@ const CookiesPolicy = () => {
           </Collapse>
         </div>
       </div>
+      <Link className={styles.arrowBack} to='/'><img src={arrow}></img>Back</Link>
     </div>
   );
 };
