@@ -49,7 +49,6 @@ const ParallaxWrapper = () => {
   const location = useLocation();
   const isProfilePage = location.pathname.startsWith("/profile");
   const is404Page = !location.pathname.startsWith("/home") &&
-                    !location.pathname.startsWith("/") &&
                     !location.pathname.startsWith("/profile") && // Excluindo a página de perfil
                     !location.pathname.startsWith("/login") &&
                     !location.pathname.startsWith("/register") &&
