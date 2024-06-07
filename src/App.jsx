@@ -21,9 +21,6 @@ const App = () => {
     setResetProgress(true);
   };
   
-  const isNotFoundPage = location.pathname === "/notfound";
-  const shouldRenderParallax = !isNotFoundPage;
-
   return (
     <React.StrictMode>
       <AuthProvider>
@@ -41,11 +38,34 @@ const App = () => {
             </Routes>
             <Footer />
           </div>
-          {shouldRenderParallax && <Parallax />}
+          <ParallaxWrapper />
         </BrowserRouter>
       </AuthProvider>
     </React.StrictMode>
   );
 };
+
+const ParallaxWrapper = () => {
+  const location = useLocation();
+  const isProfilePage = location.pathname.startsWith("/profile");
+  const is404Page = !location.pathname.startsWith("/home") &&
+                    !location.pathname.startsWith("/") &&
+                    !location.pathname.startsWith("/profile") && // Excluindo a página de perfil
+                    !location.pathname.startsWith("/login") &&
+                    !location.pathname.startsWith("/register") &&
+                    !location.pathname.startsWith("/cookies-policy");
+
+  if (is404Page) {
+    return null;
+  }
+
+  if (isProfilePage) {
+    return null; // Não renderiza o Parallax na página de perfil
+  }
+
+  return <Parallax />;
+};
+
+
 
 export default App;

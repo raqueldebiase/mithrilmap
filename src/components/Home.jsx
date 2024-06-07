@@ -135,6 +135,7 @@ const Home = () => {
   };
 
   return (
+    
     <div className={`${styles.home} container`}>
       <div className={styles.evolution}>
         <h2>The Evolution of your journey</h2>
@@ -145,8 +146,11 @@ const Home = () => {
       </div>
       {showModal && <Modal onClose={handleCloseModal} />}
     </div>
+    
   );
 };
+
+
 
 const ProgressBar = ({ total, completed, onComplete }) => {
   const percentage = (completed / total) * 100;
