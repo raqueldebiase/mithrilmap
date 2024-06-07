@@ -3,6 +3,7 @@ import { AuthProvider } from './AuthContext';
 import Register from './components/Auth/Register/Register';
 import Login from './components/Auth/Login/Login';
 import Home from './components/Home';
+import PageProfile from './components/PageProfile'; // Corrected import
 import NotFound from './components/NotFound';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
@@ -32,6 +33,7 @@ const App = () => {
             <Routes>
               <Route path='/' element={<Login />} />
               <Route path='/home' element={<Home />} />
+              <Route path='/profile' element={<PageProfile />} />
               <Route path='/login/*' element={<Login />} />
               <Route path='/register/*' element={<Register />} />
               <Route path='/cookies-policy' element={<CookiesPolicy />} />

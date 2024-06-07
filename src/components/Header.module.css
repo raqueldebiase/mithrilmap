@@ -68,7 +68,8 @@ h1 {
   z-index: 10;
 }
 
-.profileMenu button {
+.profileMenu button,
+.profileMenu a {
   display: block;
   width: 100%;
   padding: 8px 16px;
@@ -79,7 +80,8 @@ h1 {
   font-size: 1rem;
 }
 
-.profileMenu button:hover {
+.profileMenu button:hover,
+.profileMenu a:hover{
   background-color: #f0f0f0;
 }
 
