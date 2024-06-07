@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Register.module.css';
 import { auth } from '../../../firebase'; 
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -13,8 +13,14 @@ const Register = () => {
     e.preventDefault();
     try {
       console.log("Tentando registrar usuário:", email);
+      // Registrar o usuário com email e senha
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       console.log("Usuário registrado com sucesso:", userCredential.user);
+      // Atualizar o perfil do usuário com o nome de usuário
+      await updateProfile(userCredential.user, {
+        displayName: username
+      });
+      console.log("Nome de usuário adicionado ao perfil:", username);
       alert('Usuário registrado com sucesso');
     } catch (error) {
       console.error('Erro ao cadastrar novo usuário:', error);

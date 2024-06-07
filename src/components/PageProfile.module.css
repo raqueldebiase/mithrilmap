@@ -1,0 +1,49 @@
+.bgBlue{
+  background-color: #29538ae0;
+  position: absolute;
+  top: -128px;
+  height: 480px;
+  width: 100%;
+}
+
+.bgBlue div {
+  margin-top: 28rem;
+  max-width: 72rem;
+
+}
+
+.profileContent {
+  width: 100%;
+  height: 60vh;
+
+}
+
+.titleProfile {
+  text-align: start;
+  font-size: 1.4rem;
+}
+
+.photoName {
+  display: flex;
+  align-items: center;
+  gap: 1.3rem;
+}
+
+.formProfile {
+  place-items: start;
+  margin-left: 0;
+}
+
+.soon {
+  display: grid;
+  place-items: center;
+  margin-top: 16rem;
+}
+
+.soon h2 {
+  font-size: 1.2rem;
+}
+
+.soon img {
+  width: 20%;
+}

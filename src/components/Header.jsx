@@ -8,6 +8,8 @@ import GandalfMessage from './gandalfMessage';
 import { auth, resetReadingProgress } from '../firebase';
 import Cookies from 'js-cookie';
 
+
+
 const Header = ({ onResetProgress }) => {
   const { currentUser, setCurrentUser } = useAuth();
   const [showModal, setShowModal] = useState(false);
@@ -49,10 +51,6 @@ const Header = ({ onResetProgress }) => {
     navigate('/Login');
   };
 
-  const isLoginPage = location.pathname === '/Login';
-  const isRegisterPage = location.pathname === '/Register';
-  const renderModal = isLoginPage || isRegisterPage;
-
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
@@ -66,11 +64,9 @@ const Header = ({ onResetProgress }) => {
             alt="Wizard" 
             className={`${styles.profileImg} ${currentUser ? styles.imageLoggedIn : ''}`}
             onClick={handleProfileClick}
-            style={{ cursor: location.pathname === '/home' ? 'pointer' : 'default',
-            opacity: location.pathname === '/Login' ? 0.5 : 1
-             }}
+            style={{ cursor: 'pointer', opacity: location.pathname === '/Login' ? 0.5 : 1 }}
           />
-          {currentUser && location.pathname === '/home' && showMenu && (
+          {currentUser && showMenu && (
             <div className={styles.profileMenu}>
               <Link to='/profile'>Profile</Link>
               <button onClick={handleResetProgress}>Reset Progress</button>
@@ -81,8 +77,8 @@ const Header = ({ onResetProgress }) => {
       </nav>
       {showModal && renderModal && <GandalfMessage onClose={() => setShowModal(false)} />}
     </header>
-    
   );
 }
+
 
 export default Header;
