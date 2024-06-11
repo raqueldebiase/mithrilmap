@@ -20,7 +20,7 @@ const App = () => {
   const handleResetProgress = () => {
     setResetProgress(true);
   };
-  
+
   return (
     <React.StrictMode>
       <AuthProvider>
