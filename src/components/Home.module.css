@@ -57,11 +57,26 @@
 }
 
 .progressBar {
-  background-color: #BFC76C;
-  height: 3rem;
+  background-color: #BFC76C; 
+  height: 4rem;
   border: none;
   transition: width 0.5s ease-in-out;
+  position: relative;
 }
+
+.progressBar::after {
+  content: ''; 
+  position: absolute;
+  right: -15px;
+  top: 18%;
+  width: 40px; 
+  height: 40px; 
+  background-image: url('../assets/gandalf8bit.png'); 
+  background-size: contain; 
+  background-repeat: no-repeat; 
+  
+}
+
 
 /* Lista de capítulos */
 .chapterList {

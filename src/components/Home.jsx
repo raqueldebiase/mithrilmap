@@ -10,8 +10,9 @@ import Modal from './Modal';
 
 
 
+
 const chapters = [
-  { id: 1, title: 'The Silmarillion: Ainulindalë' },
+  { id: 1, title: 'The Silmarillion: Ainulindalë', avatar: '../assets/silmarills.png' },
   { id: 2, title: 'The Silmarillion: Valaquenta' },
   { id: 3, title: 'The Silmarillion: Quenta Silmarillion (up to the end of Chapter XVIII)' },
   { id: 4, title: 'Beren and Lúthien: read the entire book' },
@@ -146,21 +147,21 @@ const Home = () => {
   };
 
   return (
-    
     <div className={`${styles.home} container`}>
       <div className={styles.evolution}>
         <h2>The Evolution of your journey</h2>
         <ProgressBar total={chapters.length} completed={readChapters.length} onComplete={handleProgressBarComplete} />
       </div>
-      <div className={styles.undoButton}>
-      <button onClick={handleUndoMarkChapterAsRead}>Return the last one</button>
-    </div>
+      {readChapters.length < chapters.length && (
+        <div className={styles.undoButton}>
+          <button onClick={handleUndoMarkChapterAsRead}>Return the last one</button>
+        </div>
+      )}
       <div className={styles.chapters}>
         <ChapterList chapters={chapters} readChapters={readChapters} toggleChapter={toggleChapter} />
       </div>
       {showModal && <Modal onClose={handleCloseModal} />}
     </div>
-    
   );
 };
 
@@ -219,7 +220,9 @@ const ChapterItem = ({ chapter, isRead, toggleChapter }) => {
       className={`${styles.chapterItem} ${isRead && styles.read}`}
       onClick={handleClick}
     >
+    
       {chapter.title}
+      
     </div>
   );
 };
