@@ -17,11 +17,28 @@
   margin: 24px 10px;
 }
 
-/* .chapterList {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 0.5rem;
-} */
+.undoButton {
+  display: flex;
+  justify-content: end;
+  margin: 16px 10px;
+}
+
+.undoButton button {
+  border: none;
+  padding: 0.5rem 1rem;
+  font-family: var(--type-tirth);
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 0.4rem;
+  font-size: 0.8rem;
+  color: gray;
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+}
+
+.undoButton button:hover {
+  background-color: #E1E4C7;
+  
+}
 
 .evolution h2 {
   padding: 1.1rem 0;

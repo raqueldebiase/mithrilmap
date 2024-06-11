@@ -25,7 +25,7 @@ const CookieConsent = ({ onAccept }) => {
 
   return (
     <div className={styles.cookieConsentBanner}>
-      <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+      <p>We use cookies to enhance your experience.<br /> By continuing to visit this site you agree to our use of cookies.</p>
       <div>
         <Link to='/cookies-policy'>Learn more</Link>
         <button onClick={handleAccept}>Accept</button>

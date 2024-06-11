@@ -46,6 +46,7 @@ const chapters = [
 
 const Home = () => {
   const [readChapters, setReadChapters] = useState([]);
+  const [recentlyMarkedReadChapters, setRecentlyMarkedReadChapters] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
@@ -101,6 +102,7 @@ const Home = () => {
         : [...readChapters, chapterID];
 
       setReadChapters(updatedReadChapters);
+      setRecentlyMarkedReadChapters(prevState => [...prevState, chapterID]);
       await saveReadingProgress(user.uid, chapterID.toString());
     }
   };
@@ -112,6 +114,15 @@ const Home = () => {
       setReadChapters([]);
       setShowModal(false);
       Cookies.remove('readingProgress');
+    }
+  };
+
+  const handleUndoMarkChapterAsRead = () => {
+    if (recentlyMarkedReadChapters.length > 0) {
+      const lastReadChapter = recentlyMarkedReadChapters[recentlyMarkedReadChapters.length - 1];
+      const updatedReadChapters = readChapters.filter(id => id !== lastReadChapter);
+      setReadChapters(updatedReadChapters);
+      setRecentlyMarkedReadChapters(recentlyMarkedReadChapters.slice(0, -1));
     }
   };
 
@@ -141,6 +152,9 @@ const Home = () => {
         <h2>The Evolution of your journey</h2>
         <ProgressBar total={chapters.length} completed={readChapters.length} onComplete={handleProgressBarComplete} />
       </div>
+      <div className={styles.undoButton}>
+      <button onClick={handleUndoMarkChapterAsRead}>Return the last one</button>
+    </div>
       <div className={styles.chapters}>
         <ChapterList chapters={chapters} readChapters={readChapters} toggleChapter={toggleChapter} />
       </div>
