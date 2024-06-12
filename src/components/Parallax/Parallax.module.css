@@ -38,7 +38,7 @@
 }
 
 .layer1 {
-  top: 0vh; /* Posição inicial da camada 1 */
+  top: -35vh; 
   z-index: 4;
 
 }
@@ -58,7 +58,7 @@
 }
 
 .layer2 {
-  top: -20vh; /* Posição inicial da camada 2 */
+  top: -55vh; /* Posição inicial da camada 2 */
   z-index: 3;
 }
 
@@ -67,7 +67,7 @@
 }
 
 .layer3 {
-  top: -16vh; /* Posição inicial da camada 3 */
+  top: -65vh; /* Posição inicial da camada 3 */
   z-index: 2;
 }
 
@@ -80,7 +80,7 @@
 }
 
 .layer4 {
-  top: -50vh; /* Posição inicial da camada 4 */
+  top: -90vh; /* Posição inicial da camada 4 */
   z-index: 1;
   overflow: hidden;
 }
@@ -97,7 +97,175 @@
   height: auto;
 }
 
-/* Ajustes para monitores grandes */
+@media screen and (min-width: 1650px) and (max-width: 1950px) {
+  .layer1 {
+    top: -25vh; /* Ajuste específico para a rota /home */
+  }
+  .layer2 {
+    top: -45vh;
+  }
+  .layer3 {
+    top: -50vh;
+  }
+  .layer4 {
+    top: -70vh;
+  }
+}
+@media screen and (min-width: 1250px) and (max-width: 1649px) {
+  .layer1 {
+    top: -20vh; /* Ajuste específico para a rota /home */
+  }
+  .layer2 {
+    top: -32vh;
+  }
+  .layer3 {
+    top: -40vh;
+  }
+  .layer4 {
+    top: -60vh;
+  }
+}
+
+@media screen and (min-width: 990px) and (max-width: 1249px) {
+  .layer1 {
+    top: -13vh; /* Ajuste específico para a rota /home */
+  }
+  .layer2 {
+    top: -25vh;
+  }
+  .layer3 {
+    top: -30vh;
+  }
+  .layer4 {
+    top: -55vh;
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 989px) {
+  .layer1 {
+    top: -12vh; /* Ajuste específico para a rota /home */
+  }
+  .layer2 {
+    top: -18vh;
+  }
+  .layer3 {
+    top: -22vh;
+  }
+  .layer4 {
+    top: -40vh;
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 989px) {
+  .layer1 {
+    top: -12vh; /* Ajuste específico para a rota /home */
+  }
+  .layer2 {
+    top: -18vh;
+  }
+  .layer3 {
+    top: -22vh;
+  }
+  .layer4 {
+    top: -40vh;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  .layer1 {
+    top: -5vh; /* Ajuste específico para a rota /home */
+  }
+  .layer2 {
+    top: -18vh;
+  }
+  .layer3 {
+    top: -25vh;
+  }
+  .layer4 {
+    top: -32vh;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .layer1 {
+    top: 1vh; /* Ajuste específico para a rota /home */
+  }
+  .layer2 {
+    top: -10vh;
+  }
+  .layer3 {
+    top: -16vh;
+  }
+  .layer4 {
+    top: -28vh;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .layer1 {
+    top: -1vh; /* Ajuste específico para a rota /home */
+  }
+  .layer2 {
+    top: -10vh;
+  }
+  .layer3 {
+    top: -16vh;
+  }
+  .layer4 {
+    top: -28vh;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .layer1 {
+    top: -1vh; /* Ajuste específico para a rota /home */
+  }
+  .layer2 {
+    top: -10vh;
+  }
+  .layer3 {
+    top: -16vh;
+  }
+  .layer4 {
+    top: -24vh;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .layer1 {
+    top: 1vh; /* Ajuste específico para a rota /home */
+  }
+  .layer2 {
+    top: -6vh;
+  }
+  .layer3 {
+    top: -12vh;
+  }
+  .layer4 {
+    top: -18vh;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media screen and (max-width: 1650px) {
   .homeRoute .layer1 {
     top: -12vh; /* Posição específica para a rota /home */
@@ -116,31 +284,7 @@
   }
 }
 
-@media screen and (max-width: 1250px) {
-  .homeRoute .layer1 {
-    top: -16vh; /* Posição específica para a rota /home */
-  }
 
-  .homeRoute .layer2 {
-    top: -44vh; /* Posição específica para a rota /home */
-  }
-
-  .layer2 {
-    top: -16vh;
-  }
-}
-
-@media screen and (max-width: 1037px) {
-  .layer1 {
-    top: -5vh;
-  }
-  .layer2 {
-    top: -13vh;
-  }
-  .layer4 {
-    top: -40vh;
-  }
-}
 
 @media screen and (max-width: 840px) {
   .homeRoute .layer2 {
@@ -155,25 +299,18 @@
     animation: none;
     width: 100%;
   }
-  .layer1 {
-    top: 0vh;
-    bottom: 0vh;
-  }
+
   .homeRoute .layer1 {
     top: -8vh; /* Posição específica para a rota /home */
   }
-  .layer2 {
-    top: -10vh;
-  }
+
   .homeRoute .layer2 {
     top: -42vh; /* Posição específica para a rota /home */
   }
   .layer3 {
     animation: moveBottom2 200s infinite alternate;
   }
-  .layer4 {
-    top: -23vh;
-  }
+
   .homeRoute .layer4 {
     top: -50vh; /* Posição específica para a rota /home */
   }
@@ -181,30 +318,20 @@
 }
 
 @media screen and (max-width: 540px) {
-  .layer1 {
-    top: 5vh;
-  }
+
   .homeRoute .layer1 {
     top: -11vh; /* Posição específica para a rota /home */
   }
 
-  .layer2{
-    top: -4vh;
-    
-  }
-  .layer3 {
-    top: -10vh;
-    
-  }
+
+
 
   .layer3 img{
     /* animation: moveBottom 2000s infinite alternate; */
     animation:none;
   }
 
-  .layer4{
-    top: -20vh;
-  }
+
   .homeRoute .layer4 {
     top: -45vh; /* Posição específica para a rota /home */
   }
@@ -228,27 +355,14 @@
 @media screen and (max-width: 460px) {
 
 
-  .layer1 {
-    top: 2vh;
-  }
 
-  .layer2{
-    top: -4vh;
-    
-  }
-  .layer3 {
-    top: -10vh;
-    
-  }
 
   .layer3 img{
     /* animation: moveBottom 2000s infinite alternate; */
     animation:none;
   }
 
-  .layer4{
-    top: -16vh;
-  }
+
 }
 
 

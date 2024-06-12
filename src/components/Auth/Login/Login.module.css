@@ -137,6 +137,7 @@ form{
   .login {
     margin-top: 3rem;
     width: 25rem;
+    margin-bottom: 4rem;
   }
   .login h2 {
     font-size: 1.3rem;
@@ -148,9 +149,11 @@ form{
 
 @media screen and (max-width: 460px){
   .login {
-    margin-top: 5rem;
+
     width: 20rem;
     padding: 2rem;
+   
+
   }
   .login h2 {
     font-size: 1.3rem;

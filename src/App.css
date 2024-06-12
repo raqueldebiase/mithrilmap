@@ -62,6 +62,7 @@ a {
 .app-container {
   position: relative;
   z-index: 99999999999999; /* Garante que o conteúdo fique acima do Parallax */
+  height: 68vh;
 }
 
 
