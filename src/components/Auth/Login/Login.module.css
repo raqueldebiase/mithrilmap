@@ -7,11 +7,12 @@
   flex-shrink: 0;
   margin: auto;
   padding: 3rem;
-  text-align: center;
   margin-top: 6rem;
   margin-bottom: 6rem;
-  position: relative;
   z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 h2 {
@@ -32,7 +33,7 @@ h2 {
 form{
   display: grid;
   place-items: center;
-  width: 50%;
+  width: 75%;
   margin: auto;
   margin-top: 1rem;
 }
@@ -128,34 +129,28 @@ form{
 }
 
 @media screen and (max-width: 1070px){
-  form {
-    width: 75%;
+  .login {
+    width: 60%;
   }
 }
 
 @media screen and (max-width: 767px){
   .login {
     margin-top: 3rem;
-    width: 25rem;
+    width: 75%;
     margin-bottom: 4rem;
   }
   .login h2 {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
   }
   form {
     width: 100%;
   }
+
 }
 
 @media screen and (max-width: 460px){
-  .login {
 
-    width: 20rem;
-    padding: 2rem;
-   
-
-  }
-  .login h2 {
-    font-size: 1.3rem;
-  }
 }

@@ -28,6 +28,7 @@
 .parallaxContainer {
   position: absolute;
   width: 100vw;
+  z-index: -10;
 }
 
 .parallax {
@@ -231,18 +232,18 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 430px) {
   .layer1 {
-    top: 1vh; /* Ajuste específico para a rota /home */
+    top: -3vh; /* Ajuste específico para a rota /home */
   }
   .layer2 {
-    top: -6vh;
+    top: -10vh;
   }
   .layer3 {
-    top: -12vh;
+    top: -14vh;
   }
   .layer4 {
-    top: -18vh;
+    top: -20vh;
   }
 }
 

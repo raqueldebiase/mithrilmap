@@ -62,8 +62,21 @@ a {
 .app-container {
   position: relative;
   z-index: 99999999999999; /* Garante que o conteúdo fique acima do Parallax */
-  height: 68vh;
+  height: 77vh;
 }
+
+@media screen and (max-width: 1500px){
+  .app-container {
+    height: 67vh;
+  }
+}
+
+@media screen and (max-width: 767px){
+  .app-container {
+    height: 73vh;
+  }
+}
+
 
 
 

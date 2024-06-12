@@ -3,7 +3,7 @@
 }
 
 .cookieConsentBanner p {
-  max-width: 50%;
+  max-width: 75%;
   text-align: center;
   margin: auto;
   padding-bottom: 1rem;
@@ -43,7 +43,12 @@
   .cookieConsentBanner p {
     max-width: 80%;
   }
-  
+}
+
+@media screen and (max-width: 540px) {
+  .cookieConsentBanner p {
+    max-width: 100%;
+  }
 }
 
 @media screen and (max-width: 450px) {

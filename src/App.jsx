@@ -37,9 +37,10 @@ const App = () => {
               <Route path='/404' element={<NotFound />} />
               <Route path='*' element={<Navigate to="/404" replace />} />
             </Routes>
+            <ParallaxWrapper />
             <Footer />
           </div>
-          <ParallaxWrapper />
+          
         </BrowserRouter>
       </AuthProvider>
     </React.StrictMode>
