@@ -29,6 +29,7 @@
   position: absolute;
   width: 100vw;
   z-index: -10;
+  bottom: 0;
 }
 
 .parallax {
@@ -38,14 +39,21 @@
   z-index: -1;
 }
 
-.layer1 {
-  top: -35vh; 
-  z-index: 4;
+.layer1,
+.layer2,
+.layer3,
+.layer4 {
+  bottom: 0;
+}
 
+
+.layer1 {
+  /* top: -35vh;  */
+  z-index: 4;
 }
 
 .homeRoute .layer1 {
-  top: 65vh; /* Posição específica para a rota /home */
+  top: 65vh; 
 }
 
 .layer1 img {
@@ -59,16 +67,16 @@
 }
 
 .layer2 {
-  top: -55vh; /* Posição inicial da camada 2 */
+  /* top: -55vh;  */
   z-index: 3;
 }
 
 .homeRoute .layer2 {
-  top: -30vh; /* Posição específica para a rota /home */
+  top: -30vh; 
 }
 
 .layer3 {
-  top: -65vh; /* Posição inicial da camada 3 */
+  /* top: -65vh;  */
   z-index: 2;
 }
 
@@ -81,7 +89,7 @@
 }
 
 .layer4 {
-  top: -90vh; /* Posição inicial da camada 4 */
+  /* top: -90vh;  */
   z-index: 1;
   overflow: hidden;
 }
@@ -97,173 +105,6 @@
   width: 100%;
   height: auto;
 }
-
-@media screen and (min-width: 1650px) and (max-width: 1950px) {
-  .layer1 {
-    top: -25vh; /* Ajuste específico para a rota /home */
-  }
-  .layer2 {
-    top: -45vh;
-  }
-  .layer3 {
-    top: -50vh;
-  }
-  .layer4 {
-    top: -70vh;
-  }
-}
-@media screen and (min-width: 1250px) and (max-width: 1649px) {
-  .layer1 {
-    top: -20vh; /* Ajuste específico para a rota /home */
-  }
-  .layer2 {
-    top: -32vh;
-  }
-  .layer3 {
-    top: -40vh;
-  }
-  .layer4 {
-    top: -60vh;
-  }
-}
-
-@media screen and (min-width: 990px) and (max-width: 1249px) {
-  .layer1 {
-    top: -13vh; /* Ajuste específico para a rota /home */
-  }
-  .layer2 {
-    top: -25vh;
-  }
-  .layer3 {
-    top: -30vh;
-  }
-  .layer4 {
-    top: -55vh;
-  }
-}
-
-@media screen and (min-width: 767px) and (max-width: 989px) {
-  .layer1 {
-    top: -12vh; /* Ajuste específico para a rota /home */
-  }
-  .layer2 {
-    top: -18vh;
-  }
-  .layer3 {
-    top: -22vh;
-  }
-  .layer4 {
-    top: -40vh;
-  }
-}
-
-@media screen and (min-width: 767px) and (max-width: 989px) {
-  .layer1 {
-    top: -12vh; /* Ajuste específico para a rota /home */
-  }
-  .layer2 {
-    top: -18vh;
-  }
-  .layer3 {
-    top: -22vh;
-  }
-  .layer4 {
-    top: -40vh;
-  }
-}
-
-@media screen and (max-width: 765px) {
-  .layer1 {
-    top: -5vh; /* Ajuste específico para a rota /home */
-  }
-  .layer2 {
-    top: -18vh;
-  }
-  .layer3 {
-    top: -25vh;
-  }
-  .layer4 {
-    top: -32vh;
-  }
-}
-
-@media screen and (max-width: 660px) {
-  .layer1 {
-    top: 1vh; /* Ajuste específico para a rota /home */
-  }
-  .layer2 {
-    top: -10vh;
-  }
-  .layer3 {
-    top: -16vh;
-  }
-  .layer4 {
-    top: -28vh;
-  }
-}
-
-@media screen and (max-width: 540px) {
-  .layer1 {
-    top: -1vh; /* Ajuste específico para a rota /home */
-  }
-  .layer2 {
-    top: -10vh;
-  }
-  .layer3 {
-    top: -16vh;
-  }
-  .layer4 {
-    top: -28vh;
-  }
-}
-
-@media screen and (max-width: 440px) {
-  .layer1 {
-    top: -1vh; /* Ajuste específico para a rota /home */
-  }
-  .layer2 {
-    top: -10vh;
-  }
-  .layer3 {
-    top: -16vh;
-  }
-  .layer4 {
-    top: -24vh;
-  }
-}
-
-@media screen and (max-width: 430px) {
-  .layer1 {
-    top: -3vh; /* Ajuste específico para a rota /home */
-  }
-  .layer2 {
-    top: -10vh;
-  }
-  .layer3 {
-    top: -14vh;
-  }
-  .layer4 {
-    top: -20vh;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -354,9 +195,6 @@
 } 
 
 @media screen and (max-width: 460px) {
-
-
-
 
   .layer3 img{
     /* animation: moveBottom 2000s infinite alternate; */

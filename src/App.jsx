@@ -40,7 +40,6 @@ const App = () => {
             <ParallaxWrapper />
             <Footer />
           </div>
-          
         </BrowserRouter>
       </AuthProvider>
     </React.StrictMode>

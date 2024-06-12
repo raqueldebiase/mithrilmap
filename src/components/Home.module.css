@@ -2,7 +2,7 @@
 .home {
   padding-top: 5rem;
   margin-bottom: 5rem;
-  height: 100vh;
+
 }
 
 .home.container {
@@ -84,7 +84,7 @@
   padding: 0;
   overflow: hidden;
   padding-bottom: 2rem;
-  height: 600px;
+  height: 40vh;
   overflow-y: auto;
 }
 

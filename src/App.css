@@ -19,7 +19,6 @@ body {
   --type-title: 'mate-sc-regular';
   --type-elf: 'Tengwar Annatar', sans-serif;
   font-family: var(--type-first);
-  padding-top: 4em;
   background-color: rgba(241, 234, 201, 0.33);
   background-repeat: no-repeat;
   height: 100%;
@@ -62,20 +61,10 @@ a {
 .app-container {
   position: relative;
   z-index: 99999999999999; /* Garante que o conteúdo fique acima do Parallax */
-  height: 77vh;
+  height: 100%;
+  overflow: hidden;
 }
 
-@media screen and (max-width: 1500px){
-  .app-container {
-    height: 67vh;
-  }
-}
-
-@media screen and (max-width: 767px){
-  .app-container {
-    height: 73vh;
-  }
-}
 
 
 
