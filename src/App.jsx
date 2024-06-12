@@ -27,6 +27,7 @@ const App = () => {
         <BrowserRouter>
           <div className="app-container">
             <Header onResetProgress={handleResetProgress} />
+            <div className="divCentral">
             <Routes>
               <Route path='/' element={<Login />} />
               <Route path='/home' element={<Home />} />
@@ -37,6 +38,7 @@ const App = () => {
               <Route path='/404' element={<NotFound />} />
               <Route path='*' element={<Navigate to="/404" replace />} />
             </Routes>
+            </div>
             <ParallaxWrapper />
             <Footer />
           </div>

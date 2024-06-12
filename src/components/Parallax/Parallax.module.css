@@ -126,7 +126,32 @@
   }
 }
 
+@media screen and (max-width: 1250px) {
+  .layer1 {
+    top: -30vh; /* Posição específica para a rota /home */
+  }
 
+  .layer2 {
+    top: -44vh; /* Posição específica para a rota /home */
+  }
+
+  .layer3 {
+    top: -40vh; /* Posição específica para a rota /home */
+  }
+
+  .layer4 {
+    top: -62vh; /* Posição específica para a rota /home */
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .layer1 {
+    top: -28vh; /* Posição específica para a rota /home */
+  }
+  .layer2 {
+    top: -40vh; /* Posição específica para a rota /home */
+  }
+}
 
 @media screen and (max-width: 840px) {
   .homeRoute .layer2 {
@@ -136,7 +161,10 @@
 
 
 @media screen and (max-width: 767px) {
-  
+
+  .layer1 {
+    top: -25vh;
+  }
   .layer1 img {
     animation: none;
     width: 100%;
@@ -151,6 +179,11 @@
   }
   .layer3 {
     animation: moveBottom2 200s infinite alternate;
+    top: -45vh;
+  }
+
+  .layer4 {
+    top: -55vh;
   }
 
   .homeRoute .layer4 {
@@ -159,20 +192,32 @@
 
 }
 
+@media screen and (max-width: 660px) {
+  .layer1 {
+    top: -25vh;
+  }
+  .layer2 {
+    top: -36vh;
+  }
+  .layer3 {
+    top: -44vh;
+  }
+}
+
 @media screen and (max-width: 540px) {
 
   .homeRoute .layer1 {
     top: -11vh; /* Posição específica para a rota /home */
   }
 
-
-
+  .layer3 {
+    top: -40vh;
+  }
 
   .layer3 img{
     /* animation: moveBottom 2000s infinite alternate; */
     animation:none;
   }
-
 
   .homeRoute .layer4 {
     top: -45vh; /* Posição específica para a rota /home */
@@ -182,6 +227,9 @@
 @media screen and (max-width: 500px) {
   .homeRoute .layer1 {
     top: -7vh; /* Posição específica para a rota /home */
+  }
+  .layer2 {
+    top: -34vh;
   }
   .homeRoute .layer2 {
     top: -37vh; /* Posição específica para a rota /home */
@@ -196,11 +244,56 @@
 
 @media screen and (max-width: 460px) {
 
+  .layer1 {
+    top: -24vh;
+  }
+  .layer2 {
+    top: -31vh;
+  }
+
+  .layer3 {
+    top: -37vh;
+  }
+
   .layer3 img{
     /* animation: moveBottom 2000s infinite alternate; */
     animation:none;
   }
 
+  .layer4 {
+    top: -48vh;
+  }
+
+}
+
+@media screen and (max-width: 430px) {
+
+  .layer1 {
+    top: -20vh;
+  }
+}
+
+@media screen and (max-width: 400px) {
+
+  .layer1 {
+    top: -24vh;
+  }
+  .layer2 {
+    top: -31vh;
+  }
+
+  .layer3 {
+    top: -37vh;
+  }
+
+  .layer3 img{
+    /* animation: moveBottom 2000s infinite alternate; */
+    animation:none;
+  }
+
+  .layer4 {
+    top: -44vh;
+  }
 
 }
 
