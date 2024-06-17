@@ -161,6 +161,32 @@ form{
   }
 }
 
+@media screen and (max-width: 390px) {
+  .login {
+    width: 90%;
+    padding: 1rem;
+  }
+  .messageRegister {
+    padding: 0;
+    width: 90%;
+  }
+  .login h2 {
+    font-size: 1rem;
+  }
+  form {
+    margin-top: 3rem;
+  }
+
+  .input {
+    font-size: 0.8rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .button {
+    margin-bottom: 1.5rem;
+  }
+}
+
 @media screen and (max-width: 375px){
   .login {
     width: 90%;
