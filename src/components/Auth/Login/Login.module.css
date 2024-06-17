@@ -170,20 +170,3 @@ form{
 
 
 /* Media query específica para iPhone 14 Pro (e dispositivos similares) */
-@media only screen and (min-device-width: 430px) and (max-device-width: 430px) and (min-device-height: 932px) and (max-device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
-  .login {
-    height: 30rem;
-
-  }
-
-  form {
-    margin-top: 0rem;
-  }
-  .resetButton {
-    margin-top: -12px;
-    margin-bottom: 0px;
-  }
-  .button {
-    margin-top: 1rem;
-  }
-}

@@ -161,7 +161,7 @@ form{
   }
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 450px) {
   .login {
     width: 90%;
     padding: 1rem;
