@@ -160,4 +160,15 @@ form{
   }
 }
 
+@media screen and (max-width: 375px){
+  .login {
+    width: 90%;
+    padding: 1rem;
+  }
+  .messageRegister {
+    padding: 0;
+    width: 90%;
+  }
+
+}
 
