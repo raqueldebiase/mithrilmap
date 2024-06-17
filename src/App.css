@@ -96,9 +96,15 @@ a {
 @media screen and (max-width: 375px) {
   .divCentral {
     padding: 3rem 0;
-    height: 100vh;
+    height: 80vh;
   }
 }
 
+@media screen and (max-width: 350px) {
+  .divCentral {
+    padding: 3rem 0;
+    height: 70vh;
+  }
+}
 
 

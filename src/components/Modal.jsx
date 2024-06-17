@@ -6,18 +6,19 @@ const Modal = ({ onClose }) => {
     <div className={styles.finalMessage}>
       <h2>Parabéns!</h2>
       <div className={styles.messageModal}>
-        <div className={styles.iframe}>
+        <p>
+          That is, congratulations!<br />
+          Now, go live the little life you have left.
+        </p>
+        <div className={styles.gifContainer}>
           <iframe
             src="https://giphy.com/embed/dYTfJZ2dCQBhK"
             frameBorder="0"
             allowFullScreen
             title="Parabéns"
+            className={styles.gif}
           ></iframe>
         </div>
-        <p>
-          That is, congratulations!<br />
-          Now, go live the little life you have left.
-        </p>
       </div>
     </div>
   );

@@ -1,8 +1,6 @@
 .finalMessage {
-  margin-top: -50%;
   display: grid;
   place-items: center;
-  place-content: center;
 }
 
 .finalMessage p {
@@ -15,57 +13,69 @@
   font-family: var(--type-elf);
 }
 
-.finalMessage .iframe {
-  border-radius: 25px;
-  width: 554px;
-  height: 235px;
-
+.messageModal {
+  width: 100%;
+  max-width: 600px; /* ou qualquer tamanho máximo desejado */
+  padding: 1rem;
+  box-sizing: border-box;
+  text-align: center;
 }
 
-.iframe {
+.gifContainer {
   width: 100%;
-  height: 100%;
+  padding-top: 56.25%; /* Manter a proporção 16:9 */
   position: relative;
+  border-radius: 25px;
   overflow: hidden;
   margin-bottom: 1.7rem;
 }
 
-.iframe iframe {
+.gif {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  border: none; /* Remove a borda do iframe */
+  border: none;
+  border-radius: 25px; /* Aplicar border-radius diretamente no iframe */
 }
 
-@media screen and (max-width: 990px) {
-  .finalMessage {
-    margin-top: -70%;
-  }
-}
-@media screen and (max-width: 767px) {
-  .finalMessage {
-    margin-top: -80%;
-  }
-}
 @media screen and (max-width: 600px) {
-  .finalMessage {
-    margin-top: -100%;
+  .completionMessage h2 {
+    font-size: 1.2rem;
   }
-  .finalMessage .iframe {
+
+  .finalMessage {
+
+    display: grid;
+    place-items: center;
+  }
+
+  .finalMessage h2 {
+    font-size: 1rem;
+  }
+
+  .messageModal p {
+    font-size: 1rem;
+  }
+
+  .gifContainer {
     border-radius: 25px;
-    width: 384px;
-    height: 165px;
-  
+  }
+
+  .gif {
+    border-radius: 25px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .finalMessage {
-    margin-top: -130%;
-  }
-  .finalMessage .iframe {
+
+  .gifContainer {
     border-radius: 25px;
-    width: 384px;
-    height: 165px;
-  
+  }
+
+  .gif {
+    border-radius: 25px;
   }
 }
+

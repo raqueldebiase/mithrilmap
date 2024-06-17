@@ -154,6 +154,15 @@
 
 
 
+.completionMessage {
+  /* estilos da mensagem de conclusão */
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.5em;
+  color: #4caf50;
+}
+
+
 @media screen and (max-width: 1140px) {
   .home.container {
     max-width: 60rem !important;
@@ -164,6 +173,9 @@
 @media screen and (max-width: 840px) {
   .home.container {
     max-width: 40rem !important;
+  }
+  .completionMessage h2 {
+    font-size: 1.2rem;
   }
 }
 

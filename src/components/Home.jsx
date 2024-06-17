@@ -43,8 +43,6 @@ const chapters = [
 ];
 
 
-
-
 const Home = () => {
   const [readChapters, setReadChapters] = useState([]);
   const [recentlyMarkedReadChapters, setRecentlyMarkedReadChapters] = useState([]);
@@ -152,20 +150,24 @@ const Home = () => {
         <h2>The Evolution of your journey</h2>
         <ProgressBar total={chapters.length} completed={readChapters.length} onComplete={handleProgressBarComplete} />
       </div>
-      {readChapters.length < chapters.length && (
-        <div className={styles.undoButton}>
-          <button onClick={handleUndoMarkChapterAsRead}>Return the last one</button>
+      {readChapters.length < chapters.length ? (
+        <>
+          <div className={styles.undoButton}>
+            <button onClick={handleUndoMarkChapterAsRead}>Return the last one</button>
+          </div>
+          <div className={styles.chapters}>
+            <ChapterList chapters={chapters} readChapters={readChapters} toggleChapter={toggleChapter} />
+          </div>
+        </>
+      ) : (
+        <div className={styles.completionMessage}>
+          <h2>Congratulations! You've read all the chapters!</h2>
         </div>
       )}
-      <div className={styles.chapters}>
-        <ChapterList chapters={chapters} readChapters={readChapters} toggleChapter={toggleChapter} />
-      </div>
       {showModal && <Modal onClose={handleCloseModal} />}
     </div>
   );
 };
-
-
 
 const ProgressBar = ({ total, completed, onComplete }) => {
   const percentage = (completed / total) * 100;
@@ -196,7 +198,7 @@ const ChapterList = ({ chapters, readChapters, toggleChapter }) => {
           key={chapter.id}
           chapter={chapter}
           isRead={readChapters.includes(chapter.id)}
-          toggleChapter={() => toggleChapter(chapter.id)}
+          toggleChapter={toggleChapter}
         />
       ))}
     </div>
@@ -220,9 +222,7 @@ const ChapterItem = ({ chapter, isRead, toggleChapter }) => {
       className={`${styles.chapterItem} ${isRead && styles.read}`}
       onClick={handleClick}
     >
-    
       {chapter.title}
-      
     </div>
   );
 };
