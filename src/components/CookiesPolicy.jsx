@@ -62,7 +62,7 @@ const CookiesPolicy = () => {
           </Collapse>
         </div>
       </div>
-      <Link className={styles.arrowBack} to='/'><img src={arrow}></img>Back to login page</Link>
+      <Link className={styles.arrowBack} to='/'>Back to login page</Link>
     </div>
   );
 };
