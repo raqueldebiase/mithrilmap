@@ -150,3 +150,20 @@ form{
 
 }
 
+@media screen and (max-width: 360px){
+  .login {
+    margin-top: 3rem;
+    width: 90%;
+    margin-bottom: 4rem;
+    padding: 1rem;
+  }
+  .login h2 {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+  }
+  form {
+    width: 100%;
+  }
+
+}

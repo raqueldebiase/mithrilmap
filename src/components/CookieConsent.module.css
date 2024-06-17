@@ -57,3 +57,10 @@
   }
   
 }
+
+@media screen and (max-width: 360px){
+  .cookieConsentBanner {
+    padding-top: 1rem;
+  }
+
+}
