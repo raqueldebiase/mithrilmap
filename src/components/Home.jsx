@@ -42,7 +42,6 @@ const chapters = [
   { id: 28, title: 'The Silmarillion: read “Of the Rings of Power and the Third Age”, starting from the 31st paragraph.' },
 ];
 
-
 const Home = () => {
   const [readChapters, setReadChapters] = useState([]);
   const [recentlyMarkedReadChapters, setRecentlyMarkedReadChapters] = useState([]);
@@ -150,6 +149,7 @@ const Home = () => {
         <h2>The Evolution of your journey</h2>
         <ProgressBar total={chapters.length} completed={readChapters.length} onComplete={handleProgressBarComplete} />
       </div>
+  
       {readChapters.length < chapters.length ? (
         <>
           <div className={styles.undoButton}>
@@ -160,11 +160,8 @@ const Home = () => {
           </div>
         </>
       ) : (
-        <div className={styles.completionMessage}>
-          <h2>Congratulations! You've read all the chapters!</h2>
-        </div>
+        <Modal onClose={handleCloseModal} />
       )}
-      {showModal && <Modal onClose={handleCloseModal} />}
     </div>
   );
 };
