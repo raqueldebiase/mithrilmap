@@ -19,7 +19,7 @@ body {
   --type-title: 'mate-sc-regular';
   --type-elf: 'Tengwar Annatar', sans-serif;
   font-family: var(--type-first);
-  background-color: rgba(241, 234, 201, 0.33);
+  background: linear-gradient(to bottom, rgba(241, 234, 201, 0.33), rgba(255, 255, 255, 1));
   background-repeat: no-repeat;
   height: 100%;
 }
@@ -97,7 +97,6 @@ a {
   .divCentral {
     padding: 3rem 0;
     height: 80vh;
-    margin-top: 9rem;
   }
 }
 
@@ -105,6 +104,7 @@ a {
   .divCentral {
     padding: 3rem 0;
     height: 70vh;
+
   }
 }
 

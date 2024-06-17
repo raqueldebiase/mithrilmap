@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import  { useLocation } from 'react-router-dom';
 import styles from './Parallax.module.css';
-import svg1 from '../../assets/svg1.svg';
-import svg2 from '../../assets/svg2.svg';
-import svg3 from '../../assets/svg3.svg';
-import svg4 from '../../assets/svg4.svg';
+import svg1 from '../../assets/wave1.svg';
+import svg2 from '../../assets/wave2.svg';
+import svg3 from '../../assets/wave3.svg';
+import svg4 from '../../assets/wave4.svg';
 
 const Parallax = () => {
 
