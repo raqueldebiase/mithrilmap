@@ -1,7 +1,7 @@
 .policyContainer {
   margin-top: 4rem;
   padding: 3rem;
-  border-radius: 3rem;
+  border-radius: 1.5rem;
   background: rgba(255, 255, 255, 0.7); /* Fundo semi-transparente */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
   backdrop-filter: blur(10px); /* Desfoque do fundo */
@@ -130,6 +130,26 @@
     padding: 1rem;
     font-size: 0.8rem;
     margin-bottom: 200px;
+  }
+
+  .policyContainer .title {
+    font-size: 1.2rem;
+  }
+  .policyContent .section {
+    padding-bottom: 0px;
+  }
+  .policyContent .section h2{
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .policyContainer {
+    width: 90%;
+    padding: 2rem 1rem;
+    font-size: 0.8rem;
+    margin-bottom: 200px;
+    margin-top: 8rem;
   }
 
   .policyContainer .title {
