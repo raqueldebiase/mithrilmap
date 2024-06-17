@@ -57,6 +57,7 @@ form{
   transition: 0.2s;
   margin-bottom: 2rem;
 }
+
 .input:focus,
 .input:hover {
   outline: none;
@@ -168,6 +169,21 @@ form{
   .messageRegister {
     padding: 0;
     width: 90%;
+  }
+  .login h2 {
+    font-size: 1rem;
+  }
+  form {
+    margin-top: 1.3rem;
+  }
+
+  .input {
+    font-size: 0.8rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .button {
+    margin-bottom: 1.5rem;
   }
 
 }
