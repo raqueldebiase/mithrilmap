@@ -222,7 +222,10 @@
 @media screen and (max-width: 460px) {
 
   .layer1 {
-    top: -40vh;
+    top: -10vh;
+  }
+  .layer1 img {
+    animation: none 20s infinite alternate;
   }
   .layer2 {
     top: -42vh;
@@ -232,13 +235,6 @@
   }
   .layer4 {
     top: -68vh;
-  }
-}
-
-@media screen and (max-width: 430px) {
-
-  .layer1 {
-    top: -20vh;
   }
 }
 
