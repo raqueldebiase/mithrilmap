@@ -262,16 +262,16 @@
 @media screen and (max-width: 375px) {
 
   .layer1 {
-    top: -32vh;
+    top: -12vh;
   }
   .layer2 {
-    top: -31vh;
+    top: -54vh;
   }
   .layer3 {
-    top: -40vh;
+    top: -83vh;
   }
   .layer4 {
-    top: -56vh;
+    top: -86vh;
   }
   .homeRoute .layer1 {
     top: -35vh; 
