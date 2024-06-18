@@ -168,6 +168,10 @@
   .InitialText .linkTo {
     margin-top: 1rem;
   }
+  .InitialText .samEfrodo {
+    left: 33%;
+    bottom: 2%;
+  }
 }
 
 
