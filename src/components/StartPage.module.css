@@ -145,26 +145,39 @@
   }
   .InitialText h1 {
     padding: 1.5rem 0;
+    font-size: 1.2rem;
+  }
+  .InitialText h1 span{
+    padding: 1.5rem 0;
+    font-size: 1.2rem;
   }
   .InitialText p {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
   }
 }
 
 
 @media screen and (max-width: 375px) {
   .InitialText {
-    width: 100%;
-    padding: 2rem !important;
-    opacity: 0.9;
-    text-align: center;
     height: 87vh;
   }
   .InitialText h1 {
-    padding: 1.5rem 0;
-    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    padding: 0;
   }
   .InitialText p {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+  }
+  .InitialText .linkTo {
+    margin-top: 1.5rem;
+  }
+  .InitialText .samEfrodo {
+    left: 33%;
+  }
+  .InitialText .samEfrodo img {
+    width: 45%;
   }
 }
