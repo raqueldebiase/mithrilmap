@@ -117,6 +117,7 @@
     opacity: 0.9;
     text-align: center;
     place-content: baseline;
+    margin-top: -50px;
   }
   .InitialText h1 {
     padding: 0;
