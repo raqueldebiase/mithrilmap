@@ -164,6 +164,23 @@
   color: #4caf50;
 }
 
+.message {
+  position: fixed;
+  top: 5%;
+  /* left: 50%; */
+  right: -5%;
+  transform: translateX(-50%);
+  background-color: #fffae6;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  font-size: 16px;
+  color: #093F20;
+}
+
+
 
 @media screen and (max-width: 1140px) {
   .home.container {

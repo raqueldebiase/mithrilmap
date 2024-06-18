@@ -8,9 +8,6 @@ import styles from './Home.module.css';
 import Modal from './Modal';
 
 
-
-
-
 const chapters = [
   { id: 1, title: 'The Silmarillion: Ainulindalë', avatar: '../assets/silmarills.png' },
   { id: 2, title: 'The Silmarillion: Valaquenta' },
@@ -46,6 +43,7 @@ const Home = () => {
   const [readChapters, setReadChapters] = useState([]);
   const [recentlyMarkedReadChapters, setRecentlyMarkedReadChapters] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -102,6 +100,12 @@ const Home = () => {
       setReadChapters(updatedReadChapters);
       setRecentlyMarkedReadChapters(prevState => [...prevState, chapterID]);
       await saveReadingProgress(user.uid, chapterID.toString());
+
+      // Mostrar a mensagem quando um capítulo é marcado como lido
+      setShowMessage(true);
+      setTimeout(() => {
+        setShowMessage(false);
+      }, 4000); // Ocultar a mensagem após 2 segundos
     }
   };
 
@@ -145,6 +149,11 @@ const Home = () => {
 
   return (
     <div className={`${styles.home} container`}>
+    {showMessage && (
+      <div className={styles.message}>
+        Chapter added to your journey!
+      </div>
+    )}
       <div className={styles.evolution}>
         <h2>The Evolution of your journey</h2>
         <ProgressBar total={chapters.length} completed={readChapters.length} onComplete={handleProgressBarComplete} />
