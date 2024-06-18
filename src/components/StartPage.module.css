@@ -113,7 +113,7 @@
 @media screen and (max-width: 540px) {
   .InitialText {
     width: 100%;
-    padding: 4rem !important;
+    padding: 2rem !important;
     opacity: 0.9;
     text-align: center;
     place-content: baseline;
