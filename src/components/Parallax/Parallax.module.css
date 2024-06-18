@@ -169,7 +169,7 @@
 @media screen and (max-width: 767px) {
 
   .layer1 {
-    top: -40vh;
+    top: -36vh;
   }
   .layer3 {
     top: -65vh;
@@ -200,13 +200,13 @@
 @media screen and (max-width: 540px) {
 
   .layer1 {
-    top: -46vh;
+    top: -35vh;
   }
   .layer2 {
-    top: -50vh;
+    top: -38vh;
   }
   .layer3 {
-    top: -60vh;
+    top: -53vh;
   }
   .homeRoute .layer1 {
     top: -40vh; 
@@ -240,10 +240,10 @@
 
 
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 430px) {
 
   .layer1 {
-    top: -32vh;
+    top: -23vh;
   }
   .layer2 {
     top: -31vh;
@@ -260,16 +260,16 @@
 @media screen and (max-width: 375px) {
 
   .layer1 {
-    top: -46vh;
+    top: -23vh;
   }
   .layer2 {
-    top: -54vh;
+    top: -30vh;
   }
   .layer3 {
-    top: -83vh;
+    top: -36vh;
   }
   .layer4 {
-    top: -86vh;
+    top: -50vh;
   }
   .homeRoute .layer1 {
     top: -46vh; 

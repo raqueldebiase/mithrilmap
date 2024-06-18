@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AuthProvider } from './AuthContext';
+import StartPage from './components/StartPage';
 import Register from './components/Auth/Register/Register';
 import Login from './components/Auth/Login/Login';
 import Home from './components/Home';
@@ -7,7 +8,6 @@ import PageProfile from './components/PageProfile';
 import NotFound from './components/NotFound';
 import { BrowserRouter, Route, Routes, useLocation, Navigate } from 'react-router-dom';
 import './App.css';
-
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Parallax from './components/Parallax/Parallax';
@@ -29,7 +29,7 @@ const App = () => {
             <Header onResetProgress={handleResetProgress} />
             <div className="divCentral">
             <Routes>
-              <Route path='/' element={<Login />} />
+              <Route path='/' element={<StartPage />} />
               <Route path='/home' element={<Home />} />
               <Route path='/profile' element={<PageProfile />} />
               <Route path='/login/*' element={<Login />} />

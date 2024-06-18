@@ -7,7 +7,7 @@ const Modal = ({ onClose }) => {
       <h2>Parabéns!</h2>
       <div className={styles.messageModal}>
         <p>
-          That is, congratulations!<br />
+          That is "Congratulations"!<br />
           Now, go live the little life you have left.
         </p>
         <div className={styles.gifContainer}>
