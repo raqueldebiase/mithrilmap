@@ -225,3 +225,17 @@
     margin: 0 auto;
   }
 }
+
+/* Media query específica para iPhone 14 Pro */
+@media only screen 
+  and (min-device-width: 393px) 
+  and (max-device-width: 393px) 
+  and (min-device-height: 852px) 
+  and (max-device-height: 852px) 
+  and (-webkit-device-pixel-ratio: 3) {
+  
+    .message {
+      top: 6%;
+      right: -23%;
+    }
+}
