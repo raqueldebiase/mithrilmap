@@ -105,7 +105,7 @@ const Home = () => {
       setShowMessage(true);
       setTimeout(() => {
         setShowMessage(false);
-      }, 4000); // Ocultar a mensagem após 2 segundos
+      }, 20000); // Ocultar a mensagem após 2 segundos
     }
   };
 
