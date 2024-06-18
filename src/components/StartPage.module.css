@@ -119,19 +119,27 @@
     place-content: baseline;
   }
   .InitialText h1 {
-    padding: 1.5rem 0;
+    padding: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+  }
+  .InitialText h1 span {
+    font-size: 1.2rem;
   }
   .InitialText p {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.4rem;
   }
   .InitialText .samEfrodo{
     position: absolute;
     bottom: 4%;
-    left: 30%;
+    left: 35%;
   }
-  
   .InitialText .samEfrodo img{
-    width: 60%;
+    width: 45%;
+  }
+  .InitialText .linkTo {
+    margin-top: 1rem;
   }
 }
 
