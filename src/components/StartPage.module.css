@@ -151,6 +151,7 @@
     opacity: 0.9;
     text-align: center;
     height: 85vh;
+    place-content: baseline;
   }
   .InitialText h1 {
     padding: 0;
