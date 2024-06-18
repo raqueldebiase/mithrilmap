@@ -6,6 +6,9 @@ import { saveReadingProgress, getReadingProgress, resetReadingProgress } from '.
 import { auth, firestore } from '../firebase';
 import styles from './Home.module.css';
 import Modal from './Modal';
+import { Link } from 'react-router-dom';
+
+
 
 
 const chapters = [
@@ -105,7 +108,7 @@ const Home = () => {
       setShowMessage(true);
       setTimeout(() => {
         setShowMessage(false);
-      }, 20000); // Ocultar a mensagem após 2 segundos
+      }, 3000); // Ocultar a mensagem após 2 segundos
     }
   };
 
@@ -151,7 +154,10 @@ const Home = () => {
     <div className={`${styles.home} container`}>
     {showMessage && (
       <div className={styles.message}>
-        Chapter added to your journey!
+        <p>Chapter added to your journey!</p>
+        <Link to="/profile">
+          <button>See all chapters</button>
+        </Link>
       </div>
     )}
       <div className={styles.evolution}>

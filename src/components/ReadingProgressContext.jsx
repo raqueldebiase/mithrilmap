@@ -1,43 +1,72 @@
-// ReadingProgressContext.jsx
-
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
+import { saveReadingProgress, getReadingProgress, resetReadingProgress } from '../firebase';
+import { auth } from '../firebase';
 
 const ReadingProgressContext = createContext();
 
-export const useReadingProgress = () => {
-  const context = useContext(ReadingProgressContext);
-  if (!context) {
-    throw new Error('useReadingProgress must be used within a ReadingProgressProvider');
-  }
-  return context;
-};
+export const useReadingProgress = () => useContext(ReadingProgressContext);
 
 export const ReadingProgressProvider = ({ children }) => {
-  const [chaptersReaded, setChaptersReaded] = useState([]);
+  const [readChapters, setReadChapters] = useState([]);
 
-  const toggleChaptersReaded = (chapterID) => {
-    setChaptersReaded(prevState => {
-      if (prevState.includes(chapterID)) {
-        return prevState.filter(id => id !== chapterID);
-      } else {
-        return [...prevState, chapterID];
-      }
-    });
+  useEffect(() => {
+    const storedProgress = Cookies.get('readingProgress');
+    if (storedProgress) {
+      setReadChapters(JSON.parse(storedProgress));
+    }
+  }, []);
+
+  useEffect(() => {
+    const user = auth.currentUser;
+    if (user) {
+      const fetchProgress = async () => {
+        const progress = await getReadingProgress(user.uid);
+        if (progress) {
+          const progressChapters = Object.keys(progress).map(key => parseInt(key));
+          setReadChapters(prevState => {
+            const combinedState = [...new Set([...prevState, ...progressChapters])];
+            Cookies.set('readingProgress', JSON.stringify(combinedState));
+            return combinedState;
+          });
+        }
+      };
+      fetchProgress();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (readChapters.length > 0) {
+      Cookies.set('readingProgress', JSON.stringify(readChapters));
+    }
+  }, [readChapters]);
+
+  const toggleChapter = async (chapterID) => {
+    const user = auth.currentUser;
+    if (user) {
+      const updatedReadChapters = readChapters.includes(chapterID)
+        ? readChapters.filter(id => id !== chapterID)
+        : [...readChapters, chapterID];
+
+      setReadChapters(updatedReadChapters);
+      await saveReadingProgress(user.uid, chapterID.toString());
+    }
   };
 
-  const resetProgress = () => {
-    setChaptersReaded([]);
-  };
-
-  const value = {
-    chaptersReaded,
-    toggleChaptersReaded,
-    resetProgress,
+  const resetProgress = async () => {
+    const user = auth.currentUser;
+    if (user) {
+      await resetReadingProgress(user.uid);
+      setReadChapters([]);
+      Cookies.remove('readingProgress');
+    }
   };
 
   return (
-    <ReadingProgressContext.Provider value={value}>
+    <ReadingProgressContext.Provider value={{ readChapters, toggleChapter, resetProgress }}>
       {children}
     </ReadingProgressContext.Provider>
   );
 };
+
+export default useReadingProgress;

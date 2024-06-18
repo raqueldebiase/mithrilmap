@@ -13,10 +13,11 @@ import Footer from './components/Footer';
 import Parallax from './components/Parallax/Parallax';
 import CookieConsent from './components/CookiesConsent';
 import CookiesPolicy from './components/CookiesPolicy';
+import { ReadingProgressProvider } from './components/ReadChapterList';
 
 const App = () => {
   const [resetProgress, setResetProgress] = useState(false);
-
+  const [readChapters, setReadChapters] = useState([]);
   const handleResetProgress = () => {
     setResetProgress(true);
   };
@@ -24,25 +25,27 @@ const App = () => {
   return (
     <React.StrictMode>
       <AuthProvider>
-        <BrowserRouter>
-          <div className="app-container">
-            <Header onResetProgress={handleResetProgress} />
-            <div className="divCentral">
-            <Routes>
-              <Route path='/' element={<StartPage />} />
-              <Route path='/home' element={<Home />} />
-              <Route path='/profile' element={<PageProfile />} />
-              <Route path='/login/*' element={<Login />} />
-              <Route path='/register/*' element={<Register />} />
-              <Route path='/cookies-policy' element={<CookiesPolicy />} />
-              <Route path='/404' element={<NotFound />} />
-              <Route path='*' element={<Navigate to="/404" replace />} />
-            </Routes>
+        <ReadingProgressProvider> {/* Envolver com ReadingProgressProvider */}
+          <BrowserRouter>
+            <div className="app-container">
+              <Header onResetProgress={handleResetProgress} />
+              <div className="divCentral">
+              <Routes>
+                <Route path='/' element={<StartPage />} />
+                <Route path='/home' element={<Home />} />
+                <Route path='/profile' element={<PageProfile />} />
+                <Route path='/login/*' element={<Login />} />
+                <Route path='/register/*' element={<Register />} />
+                <Route path='/cookies-policy' element={<CookiesPolicy />} />
+                <Route path='/404' element={<NotFound />} />
+                <Route path='*' element={<Navigate to="/404" replace />} />
+              </Routes>
+              </div>
+              <ParallaxWrapper />
+              <Footer />
             </div>
-            <ParallaxWrapper />
-            <Footer />
-          </div>
-        </BrowserRouter>
+          </BrowserRouter>
+        </ReadingProgressProvider>
       </AuthProvider>
     </React.StrictMode>
   );

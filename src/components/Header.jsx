@@ -68,7 +68,7 @@ const Header = ({ onResetProgress }) => {
           />
           {currentUser && showMenu && (
             <div className={styles.profileMenu}>
-              <Link to='/profile'>Profile</Link>
+              <Link to='/profile'>Your journey</Link>
               {location.pathname === '/home' && <button onClick={handleResetProgress}>Reset Progress</button>}
               <button className={styles.exit} onClick={handleLogout}>Exit</button>
             </div>

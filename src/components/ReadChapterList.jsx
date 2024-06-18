@@ -1,5 +1,3 @@
-// ReadChapterList.jsx
-
 import React, { createContext, useContext, useState } from 'react';
 
 const ReadingProgressContext = createContext();
@@ -13,11 +11,10 @@ export const useReadingProgress = () => {
 };
 
 export const ReadingProgressProvider = ({ children }) => {
-  const [chaptersReaded, setChaptersReaded] = useState([]);
+  const [readChapters, setReadChapters] = useState([]);
 
-  const toggleChaptersReaded = (chapterID) => {
-    // Lógica para marcar capítulos como lidos
-    setChaptersReaded(prevState => {
+  const toggleChapter = (chapterID) => {
+    setReadChapters(prevState => {
       if (prevState.includes(chapterID)) {
         return prevState.filter(id => id !== chapterID);
       } else {
@@ -27,12 +24,12 @@ export const ReadingProgressProvider = ({ children }) => {
   };
 
   const resetProgress = () => {
-    setChaptersReaded([]);
+    setReadChapters([]);
   };
 
   const value = {
-    chaptersReaded,
-    toggleChaptersReaded,
+    readChapters,
+    toggleChapter,
     resetProgress,
   };
 
