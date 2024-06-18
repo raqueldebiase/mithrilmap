@@ -132,7 +132,7 @@
   }
   .InitialText .samEfrodo{
     position: absolute;
-    bottom: 4%;
+    bottom: 0%;
     left: 35%;
   }
   .InitialText .samEfrodo img{
@@ -188,7 +188,7 @@
   }
   .InitialText .samEfrodo {
     left: 33%;
-    bottom: 0;
+    bottom: 0 ;
   }
   .InitialText .samEfrodo img {
     width: 45%;
