@@ -218,6 +218,8 @@
     }
 }
 
+
+
 @media screen and (max-width: 375px) {
   .InitialText {
     height: 87vh;
@@ -240,5 +242,20 @@
   }
   .InitialText .samEfrodo img {
     width: 45%;
+  }
+}
+
+/* Media query específica para Samsung Galaxy A53 */
+@media only screen 
+  and (min-device-width: 360px) 
+  and (max-device-width: 360px) 
+  and (min-device-height: 800px) 
+  and (max-device-height: 800px) 
+  and (-webkit-device-pixel-ratio: 3) {
+  
+  /* Seus estilos para Samsung Galaxy A53 */
+  .InitialText .samEfrodo {
+    left: 33%;
+    bottom: -3%;
   }
 }
