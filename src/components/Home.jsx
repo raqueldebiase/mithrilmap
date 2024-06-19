@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { resetProgressObservable } from './resetProgressObservable';
+import { resetProgressObservable, sendChapters } from './resetProgressObservable';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { saveReadingProgress, getReadingProgress, resetReadingProgress } from '../firebase';
@@ -7,8 +7,6 @@ import { auth, firestore } from '../firebase';
 import styles from './Home.module.css';
 import Modal from './Modal';
 import { Link } from 'react-router-dom';
-
-
 
 
 const chapters = [
@@ -99,16 +97,24 @@ const Home = () => {
       const updatedReadChapters = readChapters.includes(chapterID)
         ? readChapters.filter(id => id !== chapterID)
         : [...readChapters, chapterID];
-
+  
+      // Atualiza o estado readChapters
       setReadChapters(updatedReadChapters);
+  
+      // Atualiza outro estado relacionado, se necessário
       setRecentlyMarkedReadChapters(prevState => [...prevState, chapterID]);
+  
+      // Salva o progresso de leitura
       await saveReadingProgress(user.uid, chapterID.toString());
-
-      // Mostrar a mensagem quando um capítulo é marcado como lido
+  
+      // Mostra uma mensagem temporária
       setShowMessage(true);
       setTimeout(() => {
         setShowMessage(false);
-      }, 3000); // Ocultar a mensagem após 2 segundos
+      }, 3000); // Oculta a mensagem após 3 segundos
+  
+      // Envia os capítulos lidos para outro componente usando o valor atualizado
+      sendChapters(updatedReadChapters);
     }
   };
 
@@ -120,6 +126,7 @@ const Home = () => {
       setShowModal(false);
       Cookies.remove('readingProgress');
     }
+    sendChapters(readChapters);
   };
 
   const handleUndoMarkChapterAsRead = () => {

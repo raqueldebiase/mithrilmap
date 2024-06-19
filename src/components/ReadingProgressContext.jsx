@@ -17,6 +17,18 @@ export const ReadingProgressProvider = ({ children }) => {
     }
   }, []);
 
+    useEffect(() => {
+    const subscription = resetProgressObservable.subscribe(value => {
+      if (value) {
+        handleResetProgress();
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
   useEffect(() => {
     const user = auth.currentUser;
     if (user) {

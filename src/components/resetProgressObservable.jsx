@@ -10,3 +10,15 @@ export const setResetProgress = (value) => {
 
 // Exporte o BehaviorSubject como um observable para que os componentes possam se inscrever nele
 export const resetProgressObservable = resetProgressSubject.asObservable();
+
+
+// BehaviorSubject para armazenar os capítulos lidos
+const readChaptersList = new BehaviorSubject([]);
+
+// Função para adicionar um capítulo lido
+export const sendChapters = (chapters) => {
+  readChaptersList.next(chapters);
+};
+
+// Exporte o BehaviorSubject como um observable
+export const readChaptersObservable = readChaptersList.asObservable();
