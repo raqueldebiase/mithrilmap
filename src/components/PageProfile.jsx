@@ -78,7 +78,7 @@ const PageProfile = () => {
             </div>
           </div>
           <div>
-            <h3>choose your avatar:</h3>
+            <h3>Choose your avatar:</h3>
             <div className={styles.yourInfo}>     
             </div>
           </div>

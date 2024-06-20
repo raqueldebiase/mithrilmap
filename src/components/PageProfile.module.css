@@ -18,7 +18,7 @@
 }
 
 .personalInfos {
-  display: flex;
+  display: none;
   flex-wrap: nowrap;
   gap: 2rem;
   width: 100%;
@@ -95,8 +95,18 @@
   transition: .2s;
 }
 
-@media screen and (max-width: 660px) {
-  .soon img {
-    width: 40%;
-  }
+@media screen and (min-width: 2560px) {
+
+}
+
+@media screen and (min-width: 1366px) and (max-width: 2559px) {
+
+}
+
+@media screen and (min-width: 960px) and (max-width: 1365px){
+
+}
+
+@media screen and (min-width: 375px) and (max-width: 959px){
+
 }
