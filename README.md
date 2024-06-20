@@ -1,7 +1,9 @@
-# React + Vite
+# Mithril Map
 
-<h2>Mithril Map</h2>
+<h2>React + Vite</h2>
 Mithril Map é um aplicativo que ajuda os usuários a acompanhar sua jornada de leitura dos livros da série "O Senhor dos Anéis" de J.R.R. Tolkien. O aplicativo permite que os usuários marquem os capítulos lidos, acompanhem seu progresso e visualizem uma lista dos capítulos lidos.
+
+<img width="1857" alt="Captura de Tela 2024-06-20 às 15 41 51" src="https://github.com/raqueldebiase/mithrilmap/assets/94414829/e20bbc36-826d-4631-a71d-8195b3472a3d">
 
 
 Tecnologias Utilizadas:
@@ -27,6 +29,7 @@ Funcionalidades:
   <li>Programação Reativa com RxJS Utilização de Observables para gerenciar o estado da aplicação e comunicar mudanças entre componentes. </li>
   <li>Uso de Cookies: armazenamento local do progresso de leitura para fornecer persistência de dados entre sessões do navegador.</li>
 </ul>
+
 
 
 
