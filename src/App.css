@@ -59,20 +59,10 @@ a {
 
 
 .app-container {
-  position: relative;
   z-index: 99999999999999; /* Garante que o conteúdo fique acima do Parallax */
-  height: 100%;
   overflow: hidden;
 }
 
-.divCentral {
-  height: 89vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5rem 0;
-  overflow: auto;
-}
 
 
 

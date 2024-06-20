@@ -28,21 +28,21 @@ const App = () => {
         <ReadingProgressProvider> {/* Envolver com ReadingProgressProvider */}
           <BrowserRouter>
             <div className="app-container">
-              <Header onResetProgress={handleResetProgress} />
-              <div className="divCentral">
-              <Routes>
-                <Route path='/' element={<StartPage />} />
-                <Route path='/home' element={<Home />} />
-                <Route path='/profile' element={<PageProfile />} />
-                <Route path='/login/*' element={<Login />} />
-                <Route path='/register/*' element={<Register />} />
-                <Route path='/cookies-policy' element={<CookiesPolicy />} />
-                <Route path='/404' element={<NotFound />} />
-                <Route path='*' element={<Navigate to="/404" replace />} />
-              </Routes>
+            <div className="divCentral">
+                <Header onResetProgress={handleResetProgress} />
+                <Routes>
+                  <Route path='/' element={<StartPage />} />
+                  <Route path='/home' element={<Home />} />
+                  <Route path='/profile' element={<PageProfile />} />
+                  <Route path='/login/*' element={<Login />} />
+                  <Route path='/register/*' element={<Register />} />
+                  <Route path='/cookies-policy' element={<CookiesPolicy />} />
+                  <Route path='/404' element={<NotFound />} />
+                  <Route path='*' element={<Navigate to="/404" replace />} />
+                </Routes>
+                <ParallaxWrapper />
+                <Footer />
               </div>
-              <ParallaxWrapper />
-              <Footer />
             </div>
           </BrowserRouter>
         </ReadingProgressProvider>

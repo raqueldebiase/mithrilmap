@@ -29,7 +29,6 @@
   position: absolute;
   width: 100vw;
   z-index: -10;
-  bottom: 0;
 }
 
 .parallax {
@@ -47,7 +46,7 @@
 }
 
 .layer1 {
-  top: -25vh;
+  bottom: 48px;
   z-index: 4;
 }
 
@@ -57,12 +56,12 @@
 }
 
 .layer2 {
-  top: -24vh;
+  bottom: 35px;
   z-index: 3;
 }
 
 .layer3 {
-  top: -32vh; 
+  bottom: 55px;
   z-index: 2;
 }
 .layer3 img {
@@ -70,7 +69,7 @@
 }
 
 .layer4 {
-  top: -40vh;
+  bottom: 38px;
   z-index: 1;
   overflow: hidden;
 }
@@ -116,13 +115,13 @@
 
 @media screen and (min-width: 1366px) and (max-width: 2559px) {
   .layer1 {
-    top: -34vh;
+    bottom: 25px;
   }
   .layer2 {
-    top: -40vh;
+    bottom: 35px;
   }
   .layer3 {
-    top: -64vh;
+    bottom: 55px;
   }
   .layer4 {
     top: -78vh;
@@ -130,7 +129,7 @@
 }
 
 @media screen and (min-width: 960px) and (max-width: 1365px){
-  .layer1 {
+  /* .layer1 {
     top: -28vh;
   }
   .layer2 {
@@ -141,11 +140,11 @@
   }
   .layer4 {
     top: -58vh;
-  }
+  } */
 }
 
 @media screen and (min-width: 375px) and (max-width: 959px){
-  .layer1 {
+  /* .layer1 {
     top: -28vh;
   }
   .layer2 {
@@ -156,7 +155,7 @@
   }
   .layer4 {
     top: -58vh;
-  }
+  } */
 }
 
 

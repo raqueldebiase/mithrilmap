@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import styles from './Parallax.module.css'; // Ajuste o caminho conforme necessário
-import svg1 from '../../assets/wave1.svg'; // Ajuste o caminho conforme necessário
-import svg2 from '../../assets/wave2.svg'; // Ajuste o caminho conforme necessário
-import svg3 from '../../assets/wave3.svg'; // Ajuste o caminho conforme necessário
-import svg4 from '../../assets/wave4.svg'; // Ajuste o caminho conforme necessário
+import svg1 from '../../assets/svg1.svg'; // Ajuste o caminho conforme necessário
+import svg2 from '../../assets/svg2.svg'; // Ajuste o caminho conforme necessário
+import svg3 from '../../assets/svg3.svg'; // Ajuste o caminho conforme necessário
+import svg4 from '../../assets/svg4.svg'; // Ajuste o caminho conforme necessário
 
 const ParallaxComponent = ({ isHomeRoute }) => {
   useEffect(() => {

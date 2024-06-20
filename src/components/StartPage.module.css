@@ -1,10 +1,7 @@
 .InitialText {
   background: linear-gradient(to bottom, #FDFCF7, rgba(255, 255, 255, 1));
-  padding: 1.5rem !important;
-  height: 89vh;
+  padding: 4rem !important;
   width: 100%;
-  position: absolute;
-  left: 0;
   display: grid;
   place-content: center;
   opacity: 0.9;
@@ -72,19 +69,21 @@
 
 .InitialText .samEfrodo img{
   max-width: 100%;
-  width: 175px;
+  width: 190px;
   height: 150px;
 }
 
 @media screen and (min-width: 2560px) {
   .InitialText {
     width: 40%;
+    padding: 6rem !important;
   }
 }
 
 @media screen and (min-width: 1366px) and (max-width: 2559px) {
   .InitialText {
     width: 40%;
+    padding: 3rem !important;
   }
   .InitialText h1 {
     font-size: 1.8rem;
@@ -107,6 +106,7 @@
 @media screen and (min-width: 960px) and (max-width: 1365px){
   .InitialText {
     width: 60%;
+    padding: 3.5rem !important;
   }
   .InitialText h1 {
     font-size: 1.8rem;
@@ -132,7 +132,7 @@
     width: 100%;
     place-content: baseline;
     text-align: center;
-    padding: 1.5rem !important;
+    padding: 5rem !important;
   }
   .InitialText h1,
   .InitialText h1 span {
