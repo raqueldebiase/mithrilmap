@@ -1,22 +1,20 @@
 /* Estrutura geral */
-.home {
-  padding-top: 5rem;
-  margin-bottom: 5rem;
-
-}
 
 .home.container {
   padding: 20px;
-  margin-top: 8rem;
   width: 75%;
+  position: relative;
 }
 
 .evolution {
   border: 1px solid #c3c3c3;
   border-radius: 0.4rem;
-  padding: 1.3rem;
-  margin: 24px 10px;
+  padding: 1rem;
   background-color: rgba(255, 255, 255, 0.8);
+}
+
+.evolution h2 {
+  font-size: 1rem;
 }
 
 .undoButton {
@@ -38,8 +36,7 @@
 }
 
 .undoButton button:hover {
-  background-color: #E1E4C7;
-  
+  background-color: #E1E4C7; 
 }
 
 .evolution h2 {
@@ -76,7 +73,6 @@
   background-image: url('../assets/gandalf8bit.png'); 
   background-size: contain; 
   background-repeat: no-repeat; 
-  
 }
 
 
@@ -86,11 +82,12 @@
   padding: 0;
   overflow: hidden;
   padding-bottom: 2rem;
-  height: 40vh;
+  height: 50vh;
   overflow-y: auto;
 }
 
 .chapterItem {
+  font-size: 0.8rem;
   margin: 10px 10px;
   display: flex;
   justify-content: start;
@@ -99,7 +96,7 @@
   background-color: rgba(255, 255, 255, 0.9);
   padding: 1.4rem;
   border-radius: 0.4rem;
-  transition: transform 0.3s ease; /* Adiciona uma transição de 0.3 segundos para a propriedade transform */
+  transition: transform 0.3s ease; 
 }
 
 .chapterItem:hover,
@@ -155,7 +152,6 @@
 }
 
 
-
 .completionMessage {
   /* estilos da mensagem de conclusão */
   text-align: center;
@@ -165,11 +161,11 @@
 }
 
 .message {
-  position: fixed;
-  top: 5%;
+  position: absolute;
+  top: 7%;
+  right: -5%;
   height: 8vh;
   display: grid;
-  right: -5%;
   transform: translateX(-50%);
   background-color: #fffae6;
   color: #333;
@@ -196,60 +192,31 @@
 }
 
 
-@media screen and (max-width: 1140px) {
+@media screen and (min-width: 1366px) and (max-width: 2559px) {
   .home.container {
-    max-width: 60rem !important;
+    max-width: 50% !important;
   }
-  
-}
-
-@media screen and (max-width: 840px) {
-  .home.container {
-    max-width: 40rem !important;
+  .chapterItem {
+    font-size: 0.9rem;
   }
-  .completionMessage h2 {
-    font-size: 1.2rem;
+  .evolution h2 {
+    font-size: 1.5rem;
   }
 }
 
-@media screen and (max-width: 600px) {
-
-  .home.container {
-    margin: 0 auto;
+@media screen and (min-width: 960px) and (max-width: 1365px){
+  .evolution h2 {
+    font-size: 1.4rem;
   }
+}
 
+@media screen and (min-width: 375px) and (max-width: 959px){
   .message {
-    top: 7%;
-    right: -15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
   }
-}
-
-@media screen and (max-width: 480px) {
-  .chapterList {
-    padding-bottom: 5rem;
-    font-size: 0.8rem;
+  .evolution h2 {
+    font-size: 1.4rem;
   }
-  .home h2 {
-    font-size: 1.2rem;
-  }
-  .home .evolution {
-    padding: 0rem 1rem;
-  }
-  .home.container {
-    margin: 0 auto;
-  }
-}
-
-/* Media query específica para iPhone 14 Pro */
-@media only screen 
-  and (min-device-width: 393px) 
-  and (max-device-width: 393px) 
-  and (min-device-height: 852px) 
-  and (max-device-height: 852px) 
-  and (-webkit-device-pixel-ratio: 3) {
-  
-    .message {
-      top: 9%;
-      right: -23%;
-    }
 }

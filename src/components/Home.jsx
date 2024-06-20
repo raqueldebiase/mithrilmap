@@ -111,7 +111,7 @@ const Home = () => {
       setShowMessage(true);
       setTimeout(() => {
         setShowMessage(false);
-      }, 3000); // Oculta a mensagem após 3 segundos
+      }, 30000); // Oculta a mensagem após 3 segundos
   
       // Envia os capítulos lidos para outro componente usando o valor atualizado
       sendChapters(updatedReadChapters);
