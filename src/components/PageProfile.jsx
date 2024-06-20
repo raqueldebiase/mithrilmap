@@ -1,12 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './PageProfile.module.css';
-import { useReadingProgress } from './ReadChapterList'; // Verifique o caminho correto
+import { useReadingProgress } from './ReadChapterList';
+import Cookies from 'js-cookie';
 import { readChaptersObservable, sendChapters } from './resetProgressObservable';
 
 const PageProfile = () => {
   const [readChaptersList, setReadChaptersList] = useState([]);
   const { readChapters } = useReadingProgress(); // Obtém os capítulos lidos do contexto
+
+  useEffect(() => {
+    // Carrega os dados dos cookies quando o componente é montado
+    const storedProgress = Cookies.get('readingProgress');
+    if (storedProgress) {
+      setReadChaptersList(JSON.parse(storedProgress));
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log('useEffect foi adicionado');
+    const subscription = readChaptersObservable.subscribe(value => {
+      console.log('valor recebido:', value);
+      if (value) {
+        setReadChaptersList(value);
+        // Salva os dados nos cookies sempre que a lista de capítulos lidos é atualizada
+        Cookies.set('readingProgress', JSON.stringify(value), { expires: 365 });
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
 
   const chaptersTitles = [
     { id: 1, title: 'The Silmarillion: Ainulindalë', avatar: '../assets/silmarills.png' },
@@ -39,55 +64,40 @@ const PageProfile = () => {
     { id: 28, title: 'The Silmarillion: read “Of the Rings of Power and the Third Age”, starting from the 31st paragraph.' },
   ];
 
-  useEffect(() => {
-    console.log('useEffect foi adicionado');
-    const subscription = readChaptersObservable.subscribe(value => {
-      console.log('valor recebido:', value);
-      if (value) {
-        setReadChaptersList(value);
-      }
-    });
-
-    return () => {
-      subscription.unsubscribe();
-    };
-  }, []);
-
   return (
     <div className={`${styles.profileContent} container`}>
-    <div className={styles.headerProfile}>
-    <h2>Profile</h2>
-    <p>You can find here a summary of your journey</p>
-    </div>
+      <div className={styles.headerProfile}>
+        <h2>Profile</h2>
+        <p>You can find here a summary of your journey</p>
+      </div>
       <div className={styles.yourEvolution}>
         <div className={styles.personalInfos}>
-        <div>
-        <h3>Your informations:</h3>
-        <div className={styles.yourInfo}>    
-        </div>
-        </div>
           <div>
-          <h3>choose your avatar:</h3>
-          <div className={styles.yourInfo}>     
+            <h3>Your informations:</h3>
+            <div className={styles.yourInfo}>    
+            </div>
+          </div>
+          <div>
+            <h3>choose your avatar:</h3>
+            <div className={styles.yourInfo}>     
+            </div>
           </div>
         </div>
-      </div>
         <div>
           <h3>Chapters Read:</h3>
-            <div className={styles.readChapters}>
-              <ul>
-                {readChaptersList.length > 0 ? (
-                  readChaptersList.map((chapterId, index) => {
-                    const chapter = chaptersTitles.find(ch => ch.id === chapterId);
-                    return <li key={index}>Chapter {chapter ? chapter.title : 'Unknown'}</li>;
-                  })
-                ) : (
-                  <li>No chapters read yet.</li>
-                )}
-              </ul>
-            </div>
+          <div className={styles.readChapters}>
+            <ul>
+              {readChaptersList.length > 0 ? (
+                readChaptersList.map((chapterId, index) => {
+                  const chapter = chaptersTitles.find(ch => ch.id === chapterId);
+                  return <li key={index}>Chapter {chapter ? chapter.title : 'Unknown'}</li>;
+                })
+              ) : (
+                <li>No chapters read yet.</li>
+              )}
+            </ul>
+          </div>
         </div>
-        
       </div>
       <Link className={styles.arrowBack} to="/home">
         Back to the journey

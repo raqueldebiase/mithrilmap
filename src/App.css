@@ -71,41 +71,9 @@ a {
   justify-content: center;
   align-items: center;
   padding: 5rem 0;
+  overflow: auto;
 }
 
 
-@media screen and (max-width: 767px) {
-  .divCentral {
-    height: 89vh;
-  }
-}
-
-@media screen and (max-width: 660px) {
-  .divCentral {
-    height: 89vh;
-  }
-}
-
-@media screen and (max-width: 430px) {
-  .divCentral {
-    padding: 3rem 0;
-    height: 82vh;
-  }
-}
-
-@media screen and (max-width: 375px) {
-  .divCentral {
-    padding: 3rem 0;
-    height: 87vh;
-  }
-}
-
-@media screen and (max-width: 350px) {
-  .divCentral {
-    padding: 3rem 0;
-    height: 70vh;
-
-  }
-}
 
 
