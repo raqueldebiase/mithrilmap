@@ -162,9 +162,10 @@
 
 .message {
   position: absolute;
-  top: 7%;
-  right: -5%;
-  height: 8vh;
+  left: 50%;
+  top: 8%;
+  transform: translateX(-50%);
+  width: 80%;
   display: grid;
   transform: translateX(-50%);
   background-color: #fffae6;
@@ -202,11 +203,17 @@
   .evolution h2 {
     font-size: 1.5rem;
   }
+  .message {
+    width: 40%;
+  }
 }
 
 @media screen and (min-width: 960px) and (max-width: 1365px){
   .evolution h2 {
     font-size: 1.4rem;
+  }
+  .message {
+    width: 50%;
   }
 }
 
