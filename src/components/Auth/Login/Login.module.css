@@ -2,7 +2,7 @@
   height: 100%;
   border-radius: 1.25rem;
   background: rgba(243, 240, 230, 0.92);
-  width: 40%;
+  width: 90%;
   height: 100%;
   flex-shrink: 0;
   margin: auto;
@@ -16,7 +16,7 @@
 h2 {
   color: #3E3E3E;
   text-align: center;
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   font-family: var(--type-tirth);
   padding: 1rem 0;
   font-weight: 400;
@@ -25,13 +25,12 @@ h2 {
 
 .wrapper {
   margin-bottom: 1rem;
-
 }
 
 form{
   display: grid;
   place-items: center;
-  width: 75%;
+  width: 100%;
   margin: auto;
   margin-top: 1rem;
 }
@@ -126,47 +125,40 @@ form{
 
 }
 
-@media screen and (max-width: 1070px){
+@media screen and (min-width: 2560px) {
+
+}
+
+@media screen and (min-width: 1366px) and (max-width: 2559px) {
   .login {
-    width: 60%;
+    width: 50%;
+  }
+  .login h2 {
+    font-size: 1.5rem;
+  }
+  form {
+    width: 75%;
   }
 }
 
-@media screen and (max-width: 767px){
+@media screen and (min-width: 960px) and (max-width: 1365px){
   .login {
-    margin-top: 3rem;
-    width: 85%;
-    margin-bottom: 4rem;
-    padding: 1.5rem;
+    width: 65%;
+  }
+  .login h2 {
+    font-size: 1.5rem;
+  }
+
+}
+
+@media screen and (min-width: 375px) and (max-width: 959px){
+  .login {
+    width: 80%;
   }
   .login h2 {
     font-size: 1.1rem;
-    display: flex;
-    align-items: center;
   }
   form {
     width: 100%;
   }
-
 }
-
-@media screen and (max-width: 360px){
-  .login {
-    margin-top: 3rem;
-    width: 90%;
-    margin-bottom: 4rem;
-    padding: 1rem;
-  }
-  .login h2 {
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-  }
-  form {
-    width: 100%;
-  }
-
-}
-
-
-/* Media query específica para iPhone 14 Pro (e dispositivos similares) */
