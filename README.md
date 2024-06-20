@@ -16,7 +16,10 @@ Mithril Map é um aplicativo que ajuda os usuários a acompanhar sua jornada de 
 
 Tecnologias Utilizadas:
 
-React: Biblioteca JavaScript para construir interfaces de usuário. 
+<ul>
+  <li>React: Biblioteca JavaScript para construir interfaces de usuário. </li>
+</ul>
+
 React Router: Biblioteca para roteamento no React. 
 RxJS: Biblioteca para programação reativa usando Observables. 
 Firebase: Plataforma para desenvolvimento de aplicativos móveis e web que fornece serviços como autenticação e banco de dados em tempo real. 
