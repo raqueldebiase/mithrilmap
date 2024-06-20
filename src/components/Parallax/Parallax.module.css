@@ -47,7 +47,7 @@
 }
 
 .layer1 {
-  top: -50vh;
+  top: -25vh;
   z-index: 4;
 }
 
@@ -57,12 +57,12 @@
 }
 
 .layer2 {
-  top: -55vh;
+  top: -24vh;
   z-index: 3;
 }
 
 .layer3 {
-  /* top: -65vh;  */
+  top: -32vh; 
   z-index: 2;
 }
 .layer3 img {
@@ -70,7 +70,7 @@
 }
 
 .layer4 {
-  top: -90vh;
+  top: -40vh;
   z-index: 1;
   overflow: hidden;
 }
@@ -95,16 +95,68 @@
   top: -64vh;
 }
 .homeRoute .layer3 {
-  top: -82vh; 
+  top: -82vh;
 }
 
 
+@media screen and (min-width: 2560px) {
+
+}
+
+@media screen and (min-width: 1366px) and (max-width: 2559px) {
+  .layer1 {
+    top: -34vh;
+  }
+  .layer2 {
+    top: -40vh;
+  }
+  .layer3 {
+    top: -64vh;
+  }
+  .layer4 {
+    top: -78vh;
+  }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1365px){
+  .layer1 {
+    top: -28vh;
+  }
+  .layer2 {
+    top: -30vh;
+  }
+  .layer3 {
+    top: -44vh;
+  }
+  .layer4 {
+    top: -58vh;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 959px){
+  .layer1 {
+    top: -28vh;
+  }
+  .layer2 {
+    top: -30vh;
+  }
+  .layer3 {
+    top: -44vh;
+  }
+  .layer4 {
+    top: -58vh;
+  }
+}
+
+
+
+/*
 @media screen and (max-width: 1650px) {
   .homeRoute .layer2 {
-    top: -62vh; 
+    top: -62vh;
   }
   .homeRoute .layer3 {
-    top: -70vh; 
+    top: -70vh;
   }
   .homeRoute .layer4 {
     top: -85vh;
@@ -113,28 +165,28 @@
 
 @media screen and (max-width: 1440px) {
   .layer1 {
-    top: -45vh; 
+    top: -45vh;
   }
   .layer2 {
-    top: -44vh; 
+    top: -44vh;
   }
   .layer3 {
     top: -75vh;
   }
   .layer4 {
-    top: -80vh; 
+    top: -80vh;
   }
 }
 
 @media screen and (max-width: 1250px) {
   .layer1 {
-    top: -45vh; 
+    top: -45vh;
   }
   .layer2 {
     top: -55vh;
   }
   .layer3 {
-    top: -70vh; 
+    top: -70vh;
   }
   .layer4 {
     top: -80vh;
@@ -143,25 +195,25 @@
 
 @media screen and (max-width: 880px) {
   .layer1 {
-    top: -40vh; 
+    top: -40vh;
   }
   .layer2 {
-    top: -45vh; 
+    top: -45vh;
   }
   .layer3 {
     top: -55vh;
   }
   .homeRoute .layer1 {
-    top: -46vh; 
+    top: -46vh;
   }
   .homeRoute .layer2 {
-    top: -56vh; 
+    top: -56vh;
   }
 }
 
 @media screen and (max-width: 840px) {
   .homeRoute .layer2 {
-    top: -46vh; 
+    top: -46vh;
   }
 }
 
@@ -178,16 +230,16 @@
     top: -75vh;
   }
   .homeRoute .layer1 {
-    top: -40vh; 
+    top: -40vh;
   }
   .homeRoute .layer2 {
-    top: -45vh; 
+    top: -45vh;
   }
   .homeRoute .layer3 {
-    top: -65vh; 
+    top: -65vh;
   }
   .homeRoute .layer4 {
-    top: -80vh; 
+    top: -80vh;
   }
 }
 
@@ -209,13 +261,13 @@
     top: -53vh;
   }
   .homeRoute .layer1 {
-    top: -40vh; 
+    top: -40vh;
   }
   .homeRoute .layer3 {
-    top: -50vh; 
+    top: -50vh;
   }
   .homeRoute .layer4 {
-    top: -65vh; 
+    top: -65vh;
   }
 }
 
@@ -272,16 +324,16 @@
     top: -50vh;
   }
   .homeRoute .layer1 {
-    top: -46vh; 
+    top: -46vh;
   }
   .homeRoute .layer2 {
-    top: -38vh; 
+    top: -38vh;
   }
   .homeRoute .layer3 {
-    top: -71vh; 
+    top: -71vh;
   }
   .homeRoute .layer4 {
-    top: -60vh; 
+    top: -60vh;
     transform: translateY(0px);
 
   }
@@ -291,4 +343,4 @@
 
 
 
-
+ */
