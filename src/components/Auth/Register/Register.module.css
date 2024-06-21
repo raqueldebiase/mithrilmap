@@ -89,8 +89,8 @@ form{
   box-sizing: border-box;
   min-width: 8rem;
   margin: auto;
-  margin-bottom: 1.5rem;
-  margin-top: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .button:hover,
