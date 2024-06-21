@@ -76,10 +76,19 @@ const Header = () => {
             {showMenu && (
               <div className={styles.profileMenu}>
                 {location.pathname === '/profile' && (
-                  <Link to='/home'>Home</Link>
+                  <Link to='/home'>Homepage</Link>
                 )}
                 {location.pathname === '/home' && (
                   <Link to='/profile'>Your journey</Link>
+                )}
+                {location.pathname === '/booklist' && (
+                  <>
+                  <Link to='/home'>Homepage</Link>
+                  <Link to='/profile'>Your journey</Link>
+                  </>
+                )}
+                {location.pathname !== '/booklist' && (
+                  <Link to='/booklist'>Books list</Link>
                 )}
                 <button onClick={handleResetProgress}>Reset Progress</button>
                 <button className={styles.exit} onClick={handleLogout}>Exit</button>

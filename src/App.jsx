@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import Parallax from './components/Parallax/Parallax';
 import CookieConsent from './components/CookiesConsent';
 import CookiesPolicy from './components/CookiesPolicy';
+import BookList from './components/BookList';
 import { ReadingProgressProvider } from './components/ReadChapterList';
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
                   <Route path='/login/*' element={<Login />} />
                   <Route path='/register/*' element={<Register />} />
                   <Route path='/cookies-policy' element={<CookiesPolicy />} />
+                  <Route path='/booklist' element={<BookList />} />
                   <Route path='/404' element={<NotFound />} />
                   <Route path='*' element={<Navigate to="/404" replace />} />
                 </Routes>
