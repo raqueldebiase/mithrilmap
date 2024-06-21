@@ -61,8 +61,9 @@ const CookiesPolicy = () => {
             <p>For more information, consult our privacy policy or contact us.</p>
           </Collapse>
         </div>
+        <Link className={styles.arrowBack} to='/Login'>Back to login page</Link>
       </div>
-      <Link className={styles.arrowBack} to='/Login'>Back to login page</Link>
+      
     </div>
   );
 };
