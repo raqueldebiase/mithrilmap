@@ -30,6 +30,7 @@ const Register = () => {
 
   return (
     <div className={`${styles.login} modal`}>
+      <div className={styles.registerContent}>
       <h2>Start your journey, join the fellowship!</h2>
       <p className={styles.messageRegister}><span className={styles.hello}>Hello!</span>! This app is your guide to uncovering and tracking your journey through the works of J.R.R. Tolkien. Keep track of and log your progress in reading the works, following level 2 (intermediate).</p>
       <form onSubmit={handleRegister}>
@@ -60,6 +61,8 @@ const Register = () => {
         <button className={styles.button} type="submit">Register</button>
         <Link className={styles.buttonBack} to="/Login">Back to login</Link>
       </form>
+      </div>
+      
     </div>
   );
 };
