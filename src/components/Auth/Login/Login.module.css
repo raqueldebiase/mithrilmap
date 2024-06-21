@@ -1,13 +1,16 @@
 .login {
-  height: 100%;
+  height: 100vh;
+  padding: 3rem 0;
+}
+
+.loginContent {
+  height: 75%;
   border-radius: 1.25rem;
   background: rgba(243, 240, 230, 0.92);
   width: 90%;
   flex-shrink: 0;
   margin: auto;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  padding: 6rem 3rem;
+  padding: 1rem;
   z-index: 5;
   display: flex;
   flex-wrap: wrap;
@@ -21,6 +24,7 @@ h2 {
   font-family: var(--type-tirth);
   padding: 1rem 0;
   font-weight: 400;
+  white-space: nowrap;
   
 }
 
@@ -132,9 +136,15 @@ form{
 
 @media screen and (min-width: 1366px) and (max-width: 2559px) {
   .login {
-    width: 50%;
+    display: grid;
+    place-content: center;
   }
-  .login h2 {
+  .loginContent {
+    width: 80%;
+    height: 100%;
+    padding: 6rem;
+  }
+  .loginContent h2 {
     font-size: 1.5rem;
   }
   form {
@@ -144,20 +154,26 @@ form{
 
 @media screen and (min-width: 960px) and (max-width: 1365px){
   .login {
-    width: 65%;
+    display: grid;
+    place-content: center;
   }
-  .login h2 {
+  .loginContent {
+    width: 75%;
+    height: 100%;
+    padding: 4rem;
+  }
+  .loginContent h2 {
     font-size: 1.5rem;
   }
 
 }
 
 @media screen and (min-width: 375px) and (max-width: 959px){
-  .login {
+  .loginContent {
     width: 80%;
   }
-  .login h2 {
-    font-size: 1.1rem;
+  .loginContent h2 {
+    font-size: 1.4rem;
   }
   form {
     width: 100%;

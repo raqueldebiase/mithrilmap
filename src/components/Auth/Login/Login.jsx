@@ -45,6 +45,7 @@ const Login = () => {
 
   return (
     <div className={`${styles.login} modal`}>
+      <div className={styles.loginContent}>
       <h2>SHAALL YOOU PAAAS ?</h2>
       <form onSubmit={handleLogin}>
         <input
@@ -80,6 +81,7 @@ const Login = () => {
         <Link className={styles.register} to="/Register">Not register yet? Click here</Link>
       </form>
       <CookieConsent />
+      </div> 
     </div>
   );
 };
