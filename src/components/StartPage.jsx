@@ -7,6 +7,7 @@ import samEfrodo from '../assets/samEfrodo.png';
 const StartPage = () => {
   return (
     <div className={styles.InitialText}>
+      <div className={styles.InitialTextContent}>
       <h1>Heading to Middle-earth (Minus the Trouble): Try <span>Mithril Map</span></h1>
       <p>
       Welcome to Mithril Map, where brave souls venture into the vast world of J.R.R. Tolkien's literature! This site was created to aid a two-person Book Club (est. 2019) navigating the chaos and challenges of level 02 reading.</p>
@@ -20,7 +21,7 @@ const StartPage = () => {
       <div className={styles.samEfrodo}>
         <img src={samEfrodo}></img>
       </div>
-      
+      </div> 
     </div>
   )
 }

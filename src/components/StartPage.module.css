@@ -1,16 +1,21 @@
 .InitialText {
+  height: 100vh;
+}
+
+.InitialTextContent {
+  height: 100%;
   background: linear-gradient(to bottom, #FDFCF7, rgba(255, 255, 255, 1));
-  padding: 4rem 1rem!important;
   width: 100%;
   display: grid;
   place-content: center;
   opacity: 0.9;
   text-align: center;
+  padding: 0 1.5rem;
 }
 
 .InitialText h1 {
   font-family: 'mate-sc-regular';
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 400;
   letter-spacing: 1.2px;
   margin-bottom: 1.5rem;
@@ -81,9 +86,9 @@
 }
 
 @media screen and (min-width: 1366px) and (max-width: 2559px) {
-  .InitialText {
+  .InitialTextContent {
     width: 40%;
-    padding: 3rem !important;
+    padding: 0 3rem;
   }
   .InitialText h1 {
     font-size: 1.8rem;
@@ -104,9 +109,9 @@
 }
 
 @media screen and (min-width: 960px) and (max-width: 1365px){
-  .InitialText {
-    width: 60%;
-    padding: 3.5rem !important;
+  .InitialTextContent {
+    width: 50%;
+    padding: 0 3rem !important;
   }
   .InitialText h1 {
     font-size: 1.8rem;
@@ -128,11 +133,13 @@
 }
 
 @media screen and (min-width: 375px) and (max-width: 959px){
-  .InitialText {
+  .InitialTextContent {
     width: 100%;
     place-content: baseline;
     text-align: center;
-    padding: 5rem !important;
+    padding: 0 3rem !important;
+    display: grid;
+    place-content: center;
   }
   .InitialText h1,
   .InitialText h1 span {
@@ -146,6 +153,8 @@
   .InitialText p {
     font-size: 0.9rem;
     line-height: 1.5rem;
+    width: 75%;
+    margin: auto;
   }
 }
 
