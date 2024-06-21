@@ -67,10 +67,10 @@ const PageProfile = () => {
   return (
     <div className={`${styles.profile} container`}>
     <div className={styles.profileContent}>
-    <div className={styles.headerProfile}>
-        <h2>Profile</h2>
-        <p>You can find here a summary of your journey</p>
-      </div>
+        <div className={styles.headerProfile}>
+            <h2>Profile</h2>
+            <p>You can find here a summary of your journey</p>
+        </div>
       <div className={styles.yourEvolution}>
         <div className={styles.personalInfos}>
           <div>
