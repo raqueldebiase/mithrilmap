@@ -65,8 +65,9 @@ const PageProfile = () => {
   ];
 
   return (
-    <div className={`${styles.profileContent} container`}>
-      <div className={styles.headerProfile}>
+    <div className={`${styles.profile} container`}>
+    <div className={styles.profileContent}>
+    <div className={styles.headerProfile}>
         <h2>Profile</h2>
         <p>You can find here a summary of your journey</p>
       </div>
@@ -102,6 +103,8 @@ const PageProfile = () => {
       <Link className={styles.arrowBack} to="/home">
         Back to the journey
       </Link>
+    </div>
+      
     </div>
   );
 };
