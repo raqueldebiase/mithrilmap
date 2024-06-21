@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './PageProfile.module.css';
 import { useReadingProgress } from './ReadChapterList';
 import Cookies from 'js-cookie';
-import { readChaptersObservable, sendChapters } from './resetProgressObservable';
+import { readChaptersObservable, resetProgressObservable, sendChapters } from './resetProgressObservable';
 
 const PageProfile = () => {
   const [readChaptersList, setReadChaptersList] = useState([]);
@@ -15,11 +15,8 @@ const PageProfile = () => {
     if (storedProgress) {
       setReadChaptersList(JSON.parse(storedProgress));
     }
-  }, []);
 
-  useEffect(() => {
-    console.log('useEffect foi adicionado');
-    const subscription = readChaptersObservable.subscribe(value => {
+    const readChaptersSubscription = readChaptersObservable.subscribe(value => {
       console.log('valor recebido:', value);
       if (value) {
         setReadChaptersList(value);
@@ -28,10 +25,23 @@ const PageProfile = () => {
       }
     });
 
+    const resetSubscription = resetProgressObservable.subscribe(value => {
+      if (value) {
+        handleResetProgress();
+      }
+    });
+
     return () => {
-      subscription.unsubscribe();
+      readChaptersSubscription.unsubscribe();
+      resetSubscription.unsubscribe();
     };
   }, []);
+
+  const handleResetProgress = () => {
+    setReadChaptersList([]);
+    Cookies.remove('readingProgress');
+    sendChapters([]); // Limpa os capítulos enviados
+  };
 
   const chaptersTitles = [
     { id: 1, title: 'The Silmarillion: Ainulindalë', avatar: '../assets/silmarills.png' },

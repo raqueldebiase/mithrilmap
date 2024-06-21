@@ -5,12 +5,10 @@ import styles from './Header.module.css';
 import profileWizard from '../assets/gandalf8bit.png';
 import { useAuth } from '../AuthContext';
 import GandalfMessage from './gandalfMessage';
-import { auth, resetReadingProgress } from '../firebase';
+import { auth } from '../firebase';
 import Cookies from 'js-cookie';
 
-
-
-const Header = ({ onResetProgress }) => {
+const Header = () => {
   const { currentUser, setCurrentUser } = useAuth();
   const [showModal, setShowModal] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
@@ -38,17 +36,26 @@ const Header = ({ onResetProgress }) => {
     };
   }, [showMenu]);
 
+
   const handleResetProgress = async () => {
-    // Chame a função setResetProgress para emitir um novo valor para resetProgressObservable
-    setResetProgress(true);
-    // Aqui você pode executar outras ações relacionadas ao reset de progresso, se necessário
+    try {
+      setResetProgress(true);
+      console.log('Reset Progress successfully triggered.');
+    } catch (error) {
+      console.error('Error triggering Reset Progress:', error);
+    }
   };
 
   const handleLogout = () => {
-    setCurrentUser(null);
-    auth.signOut();
-    Cookies.remove('readingProgress');
-    navigate('/Login');
+    try {
+      setCurrentUser(null);
+      auth.signOut();
+      Cookies.remove('readingProgress');
+      navigate('/Login');
+      console.log('Logout successful.');
+    } catch (error) {
+      console.error('Error during logout:', error);
+    }
   };
 
   return (
@@ -58,27 +65,32 @@ const Header = ({ onResetProgress }) => {
           <h1>MithrilMap</h1>
           <p className={styles.logoTitle} to="/" aria-label='Home'>In Gandalf we trust</p>
         </div>
-        <div className={styles.profileContainer}>
-          <img 
-            src={profileWizard} 
-            alt="Wizard" 
-            className={`${styles.profileImg} ${currentUser ? styles.imageLoggedIn : ''}`}
-            onClick={handleProfileClick}
-            style={{ cursor: 'pointer', opacity: location.pathname === '/Login' ? 0.5 : 1 }}
-          />
-          {currentUser && showMenu && (
-            <div className={styles.profileMenu}>
-              <Link to='/profile'>Your journey</Link>
-              {location.pathname === '/home' && <button onClick={handleResetProgress}>Reset Progress</button>}
-              <button className={styles.exit} onClick={handleLogout}>Exit</button>
-            </div>
-          )}
-        </div>
+        {currentUser && (
+          <div className={styles.profileContainer}>
+            <img 
+              src={profileWizard} 
+              alt="Wizard" 
+              className={`${styles.profileImg} ${styles.imageLoggedIn}`}
+              onClick={handleProfileClick}
+            />
+            {showMenu && (
+              <div className={styles.profileMenu}>
+                {location.pathname === '/profile' && (
+                  <Link to='/home'>Home</Link>
+                )}
+                {location.pathname === '/home' && (
+                  <Link to='/profile'>Your journey</Link>
+                )}
+                <button onClick={handleResetProgress}>Reset Progress</button>
+                <button className={styles.exit} onClick={handleLogout}>Exit</button>
+              </div>
+            )}
+          </div>
+        )}
       </nav>
       {showModal && renderModal && <GandalfMessage onClose={() => setShowModal(false)} />}
     </header>
   );
 }
-
 
 export default Header;
