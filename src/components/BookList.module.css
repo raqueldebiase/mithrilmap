@@ -1,5 +1,6 @@
 .bookListPage {
   height: 100vh;
+  overflow: auto;
 }
 
 .bookList {
@@ -36,6 +37,9 @@
   padding: 1.4rem;
   border-radius: 0.4rem;
   margin: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
 }
 
 .bookList nav ul li:hover,
@@ -45,6 +49,18 @@
   transition: 0.2s;
 }
 
+.linkToExt {
+  width: 25px;
+  height: 25px;
+  opacity: 0.5;
+}
+
+.linkToExt:hover {
+  width: 25px;
+  height: 25px;
+  opacity: 1;
+
+}
 
 @media screen and (min-width: 1366px) and (max-width: 2559px) {
     .bookList {

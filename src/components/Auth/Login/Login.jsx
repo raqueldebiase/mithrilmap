@@ -78,7 +78,7 @@ const Login = () => {
         <button className={styles.button} type="submit">Login</button>
         
         {resetPasswordError && <p className={styles.error}>{resetPasswordError}</p>}
-        <Link className={styles.register} to="/Register">Not register yet? Click here</Link>
+        <Link className={styles.register} to="/Register">Not registered yet? Click here</Link>
       </form>
       <CookieConsent />
       </div> 

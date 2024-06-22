@@ -16,7 +16,7 @@ const StartPage = () => {
       <p>So, grab your virtual walking stick, click below, and let's get mapping! Every great adventure starts with a click  <span>(and maybe a second breakfast)</span>.
       </p>
       <div className={styles.linkTo}>
-        <Link to="/Login" className={styles.button}>Get Start</Link>
+        <Link to="/Login" className={styles.button}>Get Started</Link>
       </div>
       <div className={styles.samEfrodo}>
         <img src={samEfrodo}></img>
