@@ -16,6 +16,7 @@ import CookiesPolicy from './components/CookiesPolicy';
 import BookList from './components/BookList';
 import { ReadingProgressProvider } from './components/ReadingProgressContext';
 import PrivateRoute from './components/PrivateRoute';
+import ErrorBoundary from './components/Auth/ErrorBoundary';
 
 const App = () => {
   const [resetProgress, setResetProgress] = useState(false);
@@ -25,6 +26,7 @@ const App = () => {
       <AuthProvider>
         <ReadingProgressProvider>
           <BrowserRouter>
+          <ErrorBoundary>
             <div className="app-container">
               <Header onResetProgress={() => setResetProgress(true)} />
               <Routes>
@@ -45,6 +47,7 @@ const App = () => {
               <ParallaxWrapper />
               <Footer />
             </div>
+            </ErrorBoundary>
           </BrowserRouter>
         </ReadingProgressProvider>
       </AuthProvider>
