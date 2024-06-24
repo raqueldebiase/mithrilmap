@@ -1,76 +1,44 @@
+// ReadingProgressContext.jsx
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
 import { saveReadingProgress, getReadingProgress, resetReadingProgress } from '../firebase';
-import { auth } from '../firebase';
+import { useAuth } from '../AuthContext';
 
 const ReadingProgressContext = createContext();
 
 export const useReadingProgress = () => useContext(ReadingProgressContext);
 
 export const ReadingProgressProvider = ({ children }) => {
+  const { currentUser } = useAuth();
   const [readChapters, setReadChapters] = useState([]);
 
   useEffect(() => {
-    const storedProgress = Cookies.get('readingProgress');
-    if (storedProgress) {
-      setReadChapters(JSON.parse(storedProgress));
-    }
-  }, []);
-
-    useEffect(() => {
-    const subscription = resetProgressObservable.subscribe(value => {
-      if (value) {
-        handleResetProgress();
-      }
-    });
-
-    return () => {
-      subscription.unsubscribe();
-    };
-  }, []);
-
-  useEffect(() => {
-    const user = auth.currentUser;
-    if (user) {
+    if (currentUser) {
       const fetchProgress = async () => {
-        const progress = await getReadingProgress(user.uid);
+        const progress = await getReadingProgress(currentUser.uid);
         if (progress) {
           const progressChapters = Object.keys(progress).map(key => parseInt(key));
-          setReadChapters(prevState => {
-            const combinedState = [...new Set([...prevState, ...progressChapters])];
-            Cookies.set('readingProgress', JSON.stringify(combinedState));
-            return combinedState;
-          });
+          setReadChapters(progressChapters);
         }
       };
       fetchProgress();
     }
-  }, []);
-
-  useEffect(() => {
-    if (readChapters.length > 0) {
-      Cookies.set('readingProgress', JSON.stringify(readChapters));
-    }
-  }, [readChapters]);
+  }, [currentUser]);
 
   const toggleChapter = async (chapterID) => {
-    const user = auth.currentUser;
-    if (user) {
+    if (currentUser) {
       const updatedReadChapters = readChapters.includes(chapterID)
         ? readChapters.filter(id => id !== chapterID)
         : [...readChapters, chapterID];
 
       setReadChapters(updatedReadChapters);
-      await saveReadingProgress(user.uid, chapterID.toString());
+      await saveReadingProgress(currentUser.uid, chapterID.toString());
     }
   };
 
   const resetProgress = async () => {
-    const user = auth.currentUser;
-    if (user) {
-      await resetReadingProgress(user.uid);
+    if (currentUser) {
+      await resetReadingProgress(currentUser.uid);
       setReadChapters([]);
-      Cookies.remove('readingProgress');
     }
   };
 

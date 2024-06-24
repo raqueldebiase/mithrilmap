@@ -76,6 +76,12 @@
   font-weight: 400;
 }
 
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .arrowBack {
   font-size: 1rem;
   font-family: var(--type-first);
@@ -84,10 +90,16 @@
   border-radius: .4rem;
   background: #fb1;
   color: #764701;
-  padding: 0.8rem 1.2rem;
   box-sizing: border-box;
-  min-width: 8rem;
-  margin: 3rem 0 1rem 0;
+  width: 185px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrowBack.resetClass {
+  background-color: #ff00004f;
 }
 
 .arrowBack:hover {

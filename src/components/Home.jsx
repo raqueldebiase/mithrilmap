@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { resetProgressObservable, sendChapters } from './resetProgressObservable';
 import { useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
-import { saveReadingProgress, getReadingProgress, resetReadingProgress } from '../firebase';
-import { auth, firestore } from '../firebase';
+import { useReadingProgress } from './ReadingProgressContext';
+import { auth } from '../firebase';
 import styles from './Home.module.css';
 import Modal from './Modal';
 import { Link } from 'react-router-dom';
-
 
 const chapters = [
   { id: 1, title: 'The Silmarillion: Ainulindalë', avatar: '../assets/silmarills.png' },
@@ -41,99 +38,20 @@ const chapters = [
 ];
 
 const Home = () => {
-  const [readChapters, setReadChapters] = useState([]);
+  const { readChapters, toggleChapter, resetProgress } = useReadingProgress();
   const [recentlyMarkedReadChapters, setRecentlyMarkedReadChapters] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const subscription = resetProgressObservable.subscribe(value => {
-      if (value) {
-        handleResetProgress();
-      }
-    });
-
-    return () => {
-      subscription.unsubscribe();
-    };
-  }, []);
-
-  useEffect(() => {
-    const storedProgress = Cookies.get('readingProgress');
-    if (storedProgress) {
-      setReadChapters(JSON.parse(storedProgress));
-    }
-  }, []);
-
-  useEffect(() => {
-    const user = auth.currentUser;
-    if (user) {
-      const fetchProgress = async () => {
-        const progress = await getReadingProgress(user.uid);
-        if (progress) {
-          const progressChapters = Object.keys(progress).map(key => parseInt(key));
-          setReadChapters(prevState => {
-            const combinedState = [...new Set([...prevState, ...progressChapters])];
-            Cookies.set('readingProgress', JSON.stringify(combinedState));
-            return combinedState;
-          });
-        }
-      };
-      fetchProgress();
-    }
-  }, []);
-
-  useEffect(() => {
-    if (readChapters.length > 0) {
-      Cookies.set('readingProgress', JSON.stringify(readChapters));
-      handleProgressBarComplete();
-    }
+    handleProgressBarComplete();
   }, [readChapters]);
-
-  const toggleChapter = async (chapterID) => {
-    const user = auth.currentUser;
-    if (user) {
-      const updatedReadChapters = readChapters.includes(chapterID)
-        ? readChapters.filter(id => id !== chapterID)
-        : [...readChapters, chapterID];
-  
-      // Atualiza o estado readChapters
-      setReadChapters(updatedReadChapters);
-  
-      // Atualiza outro estado relacionado, se necessário
-      setRecentlyMarkedReadChapters(prevState => [...prevState, chapterID]);
-  
-      // Salva o progresso de leitura
-      await saveReadingProgress(user.uid, chapterID.toString());
-  
-      // Mostra uma mensagem temporária
-      setShowMessage(true);
-      setTimeout(() => {
-        setShowMessage(false);
-      }, 3000); // Oculta a mensagem após 3 segundos
-  
-      // Envia os capítulos lidos para outro componente usando o valor atualizado
-      sendChapters(updatedReadChapters);
-    }
-  };
-
-  const handleResetProgress = async () => {
-    const user = auth.currentUser;
-    if (user) {
-      await resetReadingProgress(user.uid);
-      setReadChapters([]);
-      setShowModal(false);
-      Cookies.remove('readingProgress');
-    }
-    sendChapters(readChapters);
-  };
 
   const handleUndoMarkChapterAsRead = () => {
     if (recentlyMarkedReadChapters.length > 0) {
       const lastReadChapter = recentlyMarkedReadChapters[recentlyMarkedReadChapters.length - 1];
-      const updatedReadChapters = readChapters.filter(id => id !== lastReadChapter);
-      setReadChapters(updatedReadChapters);
+      toggleChapter(lastReadChapter);
       setRecentlyMarkedReadChapters(recentlyMarkedReadChapters.slice(0, -1));
     }
   };
@@ -142,12 +60,11 @@ const Home = () => {
     setShowModal(false);
     const user = auth.currentUser;
     if (user) {
-      resetReadingProgress(user.uid);
+      resetProgress();
     }
   };
 
   const handleLogout = () => {
-    Cookies.remove('readingProgress');
     navigate('/Login');
   };
 
@@ -159,19 +76,19 @@ const Home = () => {
 
   return (
     <div className={`${styles.home} container`}>
-    {showMessage && (
-      <div className={styles.message}>
-        <p>Chapter added to your journey!</p>
-        <Link to="/profile">
-          <button>See all chapters</button>
-        </Link>
-      </div>
-    )}
+      {showMessage && (
+        <div className={styles.message}>
+          <p>Chapter added to your journey!</p>
+          <Link to="/profile">
+            <button>See all chapters</button>
+          </Link>
+        </div>
+      )}
       <div className={styles.evolution}>
         <h2>The Evolution of your journey</h2>
         <ProgressBar total={chapters.length} completed={readChapters.length} onComplete={handleProgressBarComplete} />
       </div>
-  
+
       {readChapters.length < chapters.length ? (
         <>
           <div className={styles.undoButton}>

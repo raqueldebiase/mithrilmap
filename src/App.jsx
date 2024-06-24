@@ -14,7 +14,7 @@ import Parallax from './components/Parallax/Parallax';
 import CookieConsent from './components/CookiesConsent';
 import CookiesPolicy from './components/CookiesPolicy';
 import BookList from './components/BookList';
-import { ReadingProgressProvider } from './components/ReadChapterList';
+import { ReadingProgressProvider } from './components/ReadingProgressContext';
 import PrivateRoute from './components/PrivateRoute';
 
 const App = () => {

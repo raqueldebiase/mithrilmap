@@ -1,48 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './PageProfile.module.css';
-import { useReadingProgress } from './ReadChapterList';
-import Cookies from 'js-cookie';
-import { readChaptersObservable, resetProgressObservable, sendChapters } from './resetProgressObservable';
+import { useReadingProgress } from './ReadingProgressContext';
 
 const PageProfile = () => {
-  const [readChaptersList, setReadChaptersList] = useState([]);
-  const { readChapters } = useReadingProgress(); // Obtém os capítulos lidos do contexto
-
-  useEffect(() => {
-    // Carrega os dados dos cookies quando o componente é montado
-    const storedProgress = Cookies.get('readingProgress');
-    if (storedProgress) {
-      setReadChaptersList(JSON.parse(storedProgress));
-    }
-
-    const readChaptersSubscription = readChaptersObservable.subscribe(value => {
-      console.log('valor recebido:', value);
-      if (value) {
-        setReadChaptersList(value);
-        // Salva os dados nos cookies sempre que a lista de capítulos lidos é atualizada
-        Cookies.set('readingProgress', JSON.stringify(value), { expires: 365 });
-      }
-    });
-
-    const resetSubscription = resetProgressObservable.subscribe(value => {
-      if (value) {
-        handleResetProgress();
-      }
-    });
-
-    return () => {
-      readChaptersSubscription.unsubscribe();
-      resetSubscription.unsubscribe();
-    };
-  }, []);
-
-  const handleResetProgress = () => {
-    setReadChaptersList([]);
-    Cookies.remove('readingProgress');
-    sendChapters([]); // Limpa os capítulos enviados
-  };
-
+  const { readChapters, resetProgress } = useReadingProgress();
+  
   const chaptersTitles = [
     { id: 1, title: 'The Silmarillion: Ainulindalë', avatar: '../assets/silmarills.png' },
     { id: 2, title: 'The Silmarillion: Valaquenta' },
@@ -76,45 +39,45 @@ const PageProfile = () => {
 
   return (
     <div className={`${styles.profile} container`}>
-    <div className={styles.profileContent}>
+      <div className={styles.profileContent}>
         <div className={styles.headerProfile}>
-            <h2>Profile</h2>
-            <p>You can find here a summary of your journey</p>
+          <h2>Profile</h2>
+          <p>You can find here a summary of your journey</p>
         </div>
-      <div className={styles.yourEvolution}>
-        <div className={styles.personalInfos}>
-          <div>
-            <h3>Your informations:</h3>
-            <div className={styles.yourInfo}>    
+        <div className={styles.yourEvolution}>
+          <div className={styles.personalInfos}>
+            <div>
+              <h3>Your informations:</h3>
+              <div className={styles.yourInfo}></div>
+            </div>
+            <div>
+              <h3>Choose your avatar:</h3>
+              <div className={styles.yourInfo}></div>
             </div>
           </div>
           <div>
-            <h3>Choose your avatar:</h3>
-            <div className={styles.yourInfo}>     
-            </div>
-          </div>
-        </div>
-        <div>
-          <h3>Chapters Read:</h3>
-          <div className={styles.readChapters}>
+            <h3>Chapters Read:</h3>
+            <div className={styles.readChapters}>
             <ul>
-              {readChaptersList.length > 0 ? (
-                readChaptersList.map((chapterId, index) => {
-                  const chapter = chaptersTitles.find(ch => ch.id === chapterId);
-                  return <li key={index}>Chapter {chapter ? chapter.title : 'Unknown'}</li>;
-                })
-              ) : (
-                <li>No chapters read yet.</li>
-              )}
-            </ul>
+            {readChapters.length > 0 ? (
+              readChapters.map((chapterId, index) => {
+                const chapter = chaptersTitles.find(ch => ch.id === chapterId);
+                return <li key={index}>Chapter {chapter ? chapter.title : 'Unknown'}</li>;
+              })
+            ) : (
+              <li>No chapters read yet.</li>
+            )}
+          </ul>
+            </div>
           </div>
+        </div>
+        <div className={styles.buttons}>
+          <button className={`${styles.arrowBack} ${styles.resetClass}`} onClick={resetProgress}>Reset Progress</button>
+          <Link className={styles.arrowBack} to="/home">
+            Back to the journey
+          </Link>
         </div>
       </div>
-      <Link className={styles.arrowBack} to="/home">
-        Back to the journey
-      </Link>
-    </div>
-      
     </div>
   );
 };
