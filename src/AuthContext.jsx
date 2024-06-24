@@ -1,5 +1,6 @@
 // AuthContext.jsx
 import React, { createContext, useState, useEffect, useContext } from 'react';
+import styles from "./components/AuthContext.module.css";
 import { auth } from './firebase'; // Certifique-se de que o caminho está correto
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -18,7 +19,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>; // Ou um spinner de carregamento
+    return <div className={styles.loading}>Loading...</div>; // Ou um spinner de carregamento
   }
 
   return (
