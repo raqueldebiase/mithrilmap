@@ -6,7 +6,7 @@ import Login from './components/Auth/Login/Login';
 import Home from './components/Home';
 import PageProfile from './components/PageProfile';
 import NotFound from './components/NotFound';
-import { BrowserRouter, Route, Routes, useLocation, Navigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -19,20 +19,15 @@ import PrivateRoute from './components/PrivateRoute';
 
 const App = () => {
   const [resetProgress, setResetProgress] = useState(false);
-  const [readChapters, setReadChapters] = useState([]);
-  const handleResetProgress = () => {
-    setResetProgress(true);
-  };
 
   return (
     <React.StrictMode>
       <AuthProvider>
-        <ReadingProgressProvider> {/* Envolver com ReadingProgressProvider */}
+        <ReadingProgressProvider>
           <BrowserRouter>
             <div className="app-container">
-            <div className="divCentral">
-                <Header onResetProgress={handleResetProgress} />
-                <Routes>
+              <Header onResetProgress={() => setResetProgress(true)} />
+              <Routes>
                 <Route path='/' element={<StartPage />} />
                 <Route path='/login/*' element={<Login />} />
                 <Route path='/register/*' element={<Register />} />
@@ -47,9 +42,8 @@ const App = () => {
                   <Route path='/booklist' element={<BookList />} />
                 </Route>
               </Routes>
-                <ParallaxWrapper />
-                <Footer />
-              </div>
+              <ParallaxWrapper />
+              <Footer />
             </div>
           </BrowserRouter>
         </ReadingProgressProvider>

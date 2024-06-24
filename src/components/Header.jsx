@@ -7,7 +7,7 @@ import GandalfMessage from './gandalfMessage';
 import { auth } from '../firebase';
 import Cookies from 'js-cookie';
 
-const Header = () => {
+const Header = ({ onResetProgress }) => {
   const { currentUser, setCurrentUser } = useAuth();
   const [showModal, setShowModal] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
@@ -40,7 +40,7 @@ const Header = () => {
       setCurrentUser(null);
       auth.signOut();
       Cookies.remove('readingProgress');
-      navigate('/Login');
+      navigate('/login');
       console.log('Logout successful.');
     } catch (error) {
       console.error('Error during logout:', error);
@@ -72,8 +72,8 @@ const Header = () => {
                 )}
                 {location.pathname === '/booklist' && (
                   <>
-                  <Link to='/home'>Homepage</Link>
-                  <Link to='/profile'>Your journey</Link>
+                    <Link to='/home'>Homepage</Link>
+                    <Link to='/profile'>Your journey</Link>
                   </>
                 )}
                 {location.pathname !== '/booklist' && (
@@ -85,9 +85,9 @@ const Header = () => {
           </div>
         )}
       </nav>
-      {showModal && renderModal && <GandalfMessage onClose={() => setShowModal(false)} />}
+      {showModal && <GandalfMessage onClose={() => setShowModal(false)} />}
     </header>
   );
-}
+};
 
 export default Header;
