@@ -72,10 +72,10 @@ const PageProfile = () => {
           </div>
         </div>
         <div className={styles.buttons}>
-          <button className={`${styles.arrowBack} ${styles.resetClass}`} onClick={resetProgress}>Reset Progress</button>
           <Link className={styles.arrowBack} to="/home">
             Back to the journey
           </Link>
+          <button className={`${styles.arrowBack} ${styles.resetClass}`} onClick={resetProgress}>Reset Progress</button>
         </div>
       </div>
     </div>
