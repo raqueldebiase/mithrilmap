@@ -74,6 +74,11 @@ const Home = () => {
     }
   };
 
+  const handleAddChapterToJourney = (chapterID) => {
+    toggleChapter(chapterID);
+    setShowMessage(true); // Exibir a mensagem ao adicionar um capítulo
+  };
+
   return (
     <div className={`${styles.home} container`}>
       {showMessage && (
@@ -95,7 +100,7 @@ const Home = () => {
             <button onClick={handleUndoMarkChapterAsRead}>Return the last one</button>
           </div>
           <div className={styles.chapters}>
-            <ChapterList chapters={chapters} readChapters={readChapters} toggleChapter={toggleChapter} />
+            <ChapterList chapters={chapters} readChapters={readChapters} toggleChapter={toggleChapter} handleAddChapterToJourney={handleAddChapterToJourney} />
           </div>
         </>
       ) : (
@@ -124,7 +129,7 @@ const ProgressBar = ({ total, completed, onComplete }) => {
   );
 };
 
-const ChapterList = ({ chapters, readChapters, toggleChapter }) => {
+const ChapterList = ({ chapters, readChapters, toggleChapter, handleAddChapterToJourney }) => {
   const unreadChapters = chapters.filter(chapter => !readChapters.includes(chapter.id));
 
   return (
@@ -135,15 +140,18 @@ const ChapterList = ({ chapters, readChapters, toggleChapter }) => {
           chapter={chapter}
           isRead={readChapters.includes(chapter.id)}
           toggleChapter={toggleChapter}
+          handleAddChapterToJourney={handleAddChapterToJourney}
         />
       ))}
     </div>
   );
 };
 
-const ChapterItem = ({ chapter, isRead, toggleChapter }) => {
+const ChapterItem = ({ chapter, isRead, toggleChapter, handleAddChapterToJourney }) => {
   const handleClick = () => {
     toggleChapter(chapter.id);
+    handleAddChapterToJourney(chapter.id); // Chame handleAddChapterToJourney após marcar o capítulo como lido
+    
     const element = document.getElementById(`chapter-${chapter.id}`);
     element.style.transition = 'transform 0.3s ease';
     element.style.transform = 'translateX(100%)';
